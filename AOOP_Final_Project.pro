@@ -16,11 +16,37 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    add1.cpp \
+    building.cpp \
+    data.cpp \
+    fibonaccioffibonacci.cpp \
+    findfactorial.cpp \
+    floor.cpp \
+    judge.cpp \
+    longestpair.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mymath.cpp \
+    prime.cpp \
+    problemset.cpp \
+    shortestsummationdistance.cpp \
+    shygame.cpp
 
 HEADERS += \
-    mainwindow.h
+    add1.h \
+    building.h \
+    data.h \
+    fibonaccioffibonacci.h \
+    findfactorial.h \
+    floor.h \
+    judge.h \
+    longestpair.h \
+    mainwindow.h \
+    mymath.h \
+    prime.h \
+    problemset.h \
+    shortestsummationdistance.h \
+    shygame.h
 
 FORMS += \
     mainwindow.ui
