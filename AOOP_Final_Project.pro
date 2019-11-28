@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,6 +27,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mymath.cpp \
+    people.cpp \
     prime.cpp \
     problemset.cpp \
     shortestsummationdistance.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     longestpair.h \
     mainwindow.h \
     mymath.h \
+    people.h \
     prime.h \
     problemset.h \
     shortestsummationdistance.h \
