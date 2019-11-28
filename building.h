@@ -20,7 +20,7 @@ public:
     Data getData() {return data;}
 private:
     Judge judge;
-    Floor *floor[10];
+    Floor *floor[15];
     Data data;
     //Add1 add1;
     //Prime prime;

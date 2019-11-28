@@ -6,6 +6,7 @@ using namespace std;
 
 Building::Building()
 {
+    // DElete
     floor[0] = new Floor(new Add1);
     floor[1] = new Floor(new Prime);
     floor[2] = new Floor(new LongestPair);
@@ -13,6 +14,7 @@ Building::Building()
     floor[4] = new Floor(new FibonacciOfFibonacci);
     floor[8] = new Floor(new FindFactorial);
     floor[9] = new Floor(new ShortestSummationDistance);
+
 }
 
 void Building::run(int n)

@@ -10,6 +10,7 @@ public:
     Floor(ProblemSet *problem) {this->p = problem;}
     void setProblem(ProblemSet *problem) {this->p = problem;}
     ProblemSet *p;
+
 private:
     int fn;
 };
