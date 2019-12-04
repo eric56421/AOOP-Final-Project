@@ -37,7 +37,7 @@ public:
 private:
     const int peopleInfoState;
     Judge judge;
-    Floor *floor[15];
+    Floor *floor[30];
     Data data;
 
 };
