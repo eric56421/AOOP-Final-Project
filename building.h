@@ -1,8 +1,15 @@
 #ifndef BUILDING_H
 #define BUILDING_H
 
+#include <QDebug>
 #include <QSqlResult>
 #include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+
+#include <string>
+#include <cstdlib>
+
 #include "judge.h"
 #include "data.h"
 #include "floor.h"
@@ -15,6 +22,8 @@
 #include "findfactorial.h"
 #include "shortestsummationdistance.h"
 
+using namespace std;
+
 class Building
 {
 public:
@@ -23,14 +32,14 @@ public:
     Data getData() {return data;}
     vector<People> floorPeople;
 
+    void setupPeopleInfo();
+
 private:
+    const int peopleInfoState;
     Judge judge;
     Floor *floor[15];
     Data data;
 
-    void setUpDatabase();
-    //Add1 add1;
-    //Prime prime;
 };
 
 #endif // BUILDING_H
