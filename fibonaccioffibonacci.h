@@ -1,15 +1,17 @@
 #ifndef FIBONACCIOFFIBONACCI_H
 #define FIBONACCIOFFIBONACCI_H
 
-#include<mymath.h>
+#include "mymath.h"
+
+using namespace std;
 
 class FibonacciOfFibonacci : public MyMath
 {
-    private:
-        vector<int> fibmod60;
+    vector<int> fibmod60;
+    vector<int> fibmod10;
     public:
         FibonacciOfFibonacci();
-        string solve(string s);
+        virtual string solve(string s) override;
 };
 
 #endif // FIBONACCIOFFIBONACCI_H

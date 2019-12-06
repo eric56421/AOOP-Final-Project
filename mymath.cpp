@@ -5,59 +5,61 @@ MyMath::MyMath()
 
 }
 
-vector<int> MyMath::stringToVectorInt(string s){
-    stringstream in;
-    int n;
-    vector<int> tmp;
-    in<<s;
-    while(in>>n){
-        tmp.push_back(n);
+vector<int> MyMath::stringToVectorInt(string s)
+{
+    stringstream ss;
+    ss<<s;
+    int data;
+    vector<int> returndata;
+    while(ss>>data){
+        returndata.push_back(data);
     }
-    return tmp;
+    return returndata;
 }
 
-string MyMath::vectorIntToString(vector<int> in){
-    stringstream out;
-    for(int i=0;i<in.size();i++){
-        out<<in[i];
-        if(i!=in.size()-1)
-            out<<" ";
+string MyMath::vectorIntToString(vector<int> v)
+{
+    stringstream ss;
+    for(int i=0;i<v.size();i++){
+        ss<<v.at(i)<<" ";
     }
-    return out.str();
+    string returndata=ss.str();
+    returndata.erase(returndata.size()-1);
+    return returndata;
 }
 
-vector<double> MyMath::stringToVectorDouble(string s){
-    stringstream in;
-    double n;
-    vector<double> tmp;
-    in<<s;
-    while(in>>n){
-        tmp.push_back(n);
+vector<double> MyMath::stringToVectorDouble(string s)
+{
+    stringstream ss;
+    ss<<s;
+    double data;
+    vector<double> returndata;
+    while(ss>>data){
+        returndata.push_back(data);
     }
-    return tmp;
+    return returndata;
 }
 
-string MyMath::vectorDoubleToString(vector<double> in){
-    stringstream out;
-    for(int i=0;i<in.size();i++){
-        out<<fixed<<setprecision(2)<<in[i];
-        if(i!=in.size()-1)
-            out<<" ";
+string MyMath::vectorDoubleToString(vector<double> v)
+{
+    stringstream ss;
+    ss<<fixed<<setprecision(2);
+    for(int i=0;i<v.size();i++){
+        ss<<v.at(i)<<" ";
     }
-    return out.str();
+    string returndata=ss.str();
+    returndata.erase(returndata.size()-1);
+    return returndata;
 }
 
-string MyMath::vectorIntToStringOfFactorial(vector<int> in){
-    stringstream out;
-    for(int i=0;i<in.size();i++){
-        if(in[i]!=-1){
-            out<<in[i]<<"!";
-        }
-        else {
-            out<<"N";
-        }
-        if(i!=in.size()-1)
-            out<<" ";
+vector<MyMath::Point3D> MyMath::stringToVectorPoint3D(string s)
+{
+    stringstream ss;
+    ss<<s;
+    Point3D data;
+    vector<Point3D> returndata;
+    while(ss>>data.x>>data.y>>data.z){
+        returndata.push_back(data);
     }
-    return out.str();
+    return returndata;
 }
