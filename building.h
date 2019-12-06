@@ -14,6 +14,8 @@
 #include "data.h"
 #include "floor.h"
 #include "people.h"
+#include "problems.h"
+/*
 #include "add1.h"
 #include "prime.h"
 #include "longestpair.h"
@@ -21,7 +23,7 @@
 #include "fibonaccioffibonacci.h"
 #include "findfactorial.h"
 #include "shortestsummationdistance.h"
-
+*/
 using namespace std;
 
 class Building

@@ -3,13 +3,13 @@
 Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states in data.csv
 {    
         // destructor
-    floor[0] = new Floor(new Add1);
-    floor[1] = new Floor(new Prime);
-    floor[2] = new Floor(new LongestPair);
-    floor[3] = new Floor(new ShyGame);
-    floor[4] = new Floor(new FibonacciOfFibonacci);
-    floor[8] = new Floor(new FindFactorial);
-    floor[9] = new Floor(new ShortestSummationDistance);
+    floor[0] = new Floor(new P1);
+    floor[1] = new Floor(new P2);
+    floor[2] = new Floor(new P3);
+    floor[3] = new Floor(new P4);
+    floor[4] = new Floor(new P5);
+    floor[8] = new Floor(new P6);
+    floor[9] = new Floor(new P7);
 
 }
 
@@ -23,7 +23,6 @@ void Building::setupPeopleInfo()
     else
         selectQuery.insert(selectQuery.size()-4, to_string(peopleInfoState));
 
-    //qDebug()<<QString::fromStdString(selectQuery);
     query.exec(selectQuery.c_str());
 
     floorPeople.resize(11);

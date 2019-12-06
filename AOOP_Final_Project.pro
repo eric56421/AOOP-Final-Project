@@ -46,6 +46,7 @@ HEADERS += \
     mymath.h \
     people.h \
     prime.h \
+    problems.h \
     problemset.h \
     shortestsummationdistance.h \
     shygame.h
