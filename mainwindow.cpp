@@ -63,7 +63,7 @@ void MainWindow::on_buttonRun_clicked()
 {
     Data result;
 
-    EE.run(ui->comboBox->currentIndex());
+    EE.run(ui->comboBox->currentIndex()+1);
     result = EE.getData();
 
     ui->lineTestdata->setText(QString::fromStdString(result.testdata));

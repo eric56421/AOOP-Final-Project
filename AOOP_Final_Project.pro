@@ -21,15 +21,21 @@ SOURCES += \
     data.cpp \
     fibonaccioffibonacci.cpp \
     findfactorial.cpp \
+    findstructuresoftrees.cpp \
     floor.cpp \
+    getsignature.cpp \
     judge.cpp \
-    longestpair.cpp \
+    largesroot.cpp \
     main.cpp \
     mainwindow.cpp \
+    minesweeper.cpp \
     mymath.cpp \
+    myother.cpp \
+    mytree.cpp \
     people.cpp \
     prime.cpp \
     problemset.cpp \
+    shortestandlongestpair.cpp \
     shortestsummationdistance.cpp \
     shygame.cpp
 
@@ -39,15 +45,21 @@ HEADERS += \
     data.h \
     fibonaccioffibonacci.h \
     findfactorial.h \
+    findstructuresoftrees.h \
     floor.h \
+    getsignature.h \
     judge.h \
-    longestpair.h \
+    largesroot.h \
     mainwindow.h \
+    minesweeper.h \
     mymath.h \
+    myother.h \
+    mytree.h \
     people.h \
     prime.h \
     problems.h \
     problemset.h \
+    shortestandlongestpair.h \
     shortestsummationdistance.h \
     shygame.h
 

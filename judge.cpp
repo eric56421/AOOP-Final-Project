@@ -3,12 +3,11 @@
 Judge::Judge()
 {
     timer.start();
-    srand(time(NULL));
 }
 
-string Judge::getData(int question)
+string Judge::getData(int floorNum)
 {
-     in.open(to_string(question+1)+".txt");
+     in.open(to_string(floorNum)+".txt");
      if(!in){
          qDebug()<<"open file failed"<<endl;
      }else{

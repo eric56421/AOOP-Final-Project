@@ -3,12 +3,13 @@
 
 #include <QtGlobal>
 #include <QElapsedTimer>
+#include <QDebug>
+
 #include <string>
 #include <fstream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-#include <QDebug>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ class Judge
 {
     public:
         Judge();
-        string getData(int question);
+        string getData(int floorNum);
         bool submitData(string ans);
         qint64 getSpendTime() {return costtime;}
     private:

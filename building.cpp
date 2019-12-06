@@ -3,14 +3,27 @@
 Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states in data.csv
 {    
         // destructor
-    floor[0] = new Floor(new P1);
-    floor[1] = new Floor(new P2);
-    floor[2] = new Floor(new P3);
-    floor[3] = new Floor(new P4);
-    floor[4] = new Floor(new P5);
-    floor[8] = new Floor(new P6);
-    floor[9] = new Floor(new P7);
-
+    //floor[0] = new Floor(new P1);
+    floor[1] = new Floor(new P1);
+    floor[2] = new Floor(new P2);
+    floor[3] = new Floor(new P3);
+    floor[4] = new Floor(new P4);
+    floor[5] = new Floor(new P5);
+    floor[6] = new Floor(new P6);
+    floor[7] = new Floor(new P7);
+    floor[8] = new Floor(new P8);
+    floor[9] = new Floor(new P9);
+    floor[10] = new Floor(new P10);
+//    floor[11] = new Floor(new P11);
+//    floor[12] = new Floor(new P12);
+//    floor[13] = new Floor(new P13);
+//    floor[14] = new Floor(new P14);
+//    floor[15] = new Floor(new P15);
+//    floor[16] = new Floor(new P16);
+//    floor[17] = new Floor(new P17);
+//    floor[18] = new Floor(new P18);
+//    floor[19] = new Floor(new P19);
+//    floor[20] = new Floor(new P20);
 }
 
 void Building::setupPeopleInfo()
@@ -30,23 +43,20 @@ void Building::setupPeopleInfo()
     while (query.next()) {
         int at, to, num;
 
-        at = query.value(1).toInt();
-        to = query.value(2).toInt();
-        num = query.value(3).toInt();
+//        at = query.value(1).toInt();
+//        to = query.value(2).toInt();
+//        num = query.value(3).toInt();
+//        qDebug()<<at<<to<<num;
 
-        qDebug()<<at<<to<<num;
-
-        floorPeople.at(at).to = to;
-        floorPeople.at(at).num = num;
+        floorPeople.at(query.value(1).toInt()).to = query.value(2).toInt();
+        floorPeople.at(query.value(1).toInt()).num = query.value(3).toInt();
     }
-//    qDebug()<<floorPeople.at(1).to;
-//    qDebug()<<floorPeople.at(1).num;
 }
 
-void Building::run(int n)
+void Building::run(int floorNum)
 {
-    data.testdata = judge.getData(n);
-    data.submit = floor[n]->p->solve(data.testdata);
+    data.testdata = judge.getData(floorNum);
+    data.submit = floor[floorNum]->p->solve(data.testdata);
     data.correct = judge.submitData(data.submit);
     data.spendtime = judge.getSpendTime();
 }

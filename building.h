@@ -15,22 +15,6 @@
 #include "floor.h"
 #include "people.h"
 #include "problems.h"
-/*
-#include "add1.h"
-#include "prime.h"
-#include "longestpair.h"
-#include "shygame.h"
-#include "fibonaccioffibonacci.h"
-#include "findfactorial.h"
-#include "shortestsummationdistance.h"
-*/
-#include "shortestandlongestpair.h"
-#include "minesweeper.h"
-#include "getsignature.h"
-//#include "shygame.h"
-//#include "fibonaccioffibonacci.h"
-#include "largesroot.h"
-#include "findstructuresoftrees.h"
 
 using namespace std;
 
@@ -38,7 +22,7 @@ class Building
 {
 public:
     Building();
-    void run(int n);
+    void run(int floorNum);
     Data getData() {return data;}
     vector<People> floorPeople;
 
@@ -47,7 +31,7 @@ public:
 private:
     const int peopleInfoState;
     Judge judge;
-    Floor *floor[30];
+    Floor *floor[31];
     Data data;
 
 };

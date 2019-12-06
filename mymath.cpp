@@ -52,6 +52,22 @@ string MyMath::vectorDoubleToString(vector<double> v)
     return returndata;
 }
 
+string MyMath::vectorIntToStringOfFactorial(vector<int> in)
+{
+    stringstream out;
+    for(int i=0;i<in.size();i++){
+        if(in[i]!=-1){
+            out<<in[i]<<"!";
+        }
+        else {
+            out<<"N";
+        }
+        if(i!=in.size()-1)
+            out<<" ";
+    }
+    return out.str();
+}
+
 vector<MyMath::Point3D> MyMath::stringToVectorPoint3D(string s)
 {
     stringstream ss;
