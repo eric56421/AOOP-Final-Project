@@ -8,12 +8,12 @@ using namespace std;
 
 class Data
 {
-public:
-    Data();
-    qint64 spendtime;
-    string testdata;
-    string submit;
-    bool correct;
+    public:
+        Data();
+        qint64 spendtime;
+        string testdata;
+        string submit;
+        bool correct;
 };
 
 #endif // DATA_H

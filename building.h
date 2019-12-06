@@ -24,6 +24,14 @@
 #include "findfactorial.h"
 #include "shortestsummationdistance.h"
 */
+#include "shortestandlongestpair.h"
+#include "minesweeper.h"
+#include "getsignature.h"
+//#include "shygame.h"
+//#include "fibonaccioffibonacci.h"
+#include "largesroot.h"
+#include "findstructuresoftrees.h"
+
 using namespace std;
 
 class Building

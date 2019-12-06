@@ -23,6 +23,7 @@ void Building::setupPeopleInfo()
     else
         selectQuery.insert(selectQuery.size()-4, to_string(peopleInfoState));
 
+    //qDebug()<<QString::fromStdString(selectQuery);
     query.exec(selectQuery.c_str());
 
     floorPeople.resize(11);

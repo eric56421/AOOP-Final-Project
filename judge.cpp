@@ -1,13 +1,4 @@
 #include "judge.h"
-#include <QElapsedTimer>
-#include <QtGlobal>
-#include <string>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
-#include <QDebug>
-
-using namespace std;
 
 Judge::Judge()
 {
@@ -17,29 +8,29 @@ Judge::Judge()
 
 string Judge::getData(int question)
 {
-    string tmp;
-    vector<string> dataV, ansV;    
+     in.open(to_string(question+1)+".txt");
+     if(!in){
+         qDebug()<<"open file failed"<<endl;
+     }else{
+         qDebug()<<"open file successful"<<endl;
+     }
 
-    in.open(to_string(question)+".txt");  // to_string(question)+".txt"
-    if (!in)
-        qDebug()<<"open fail"<<endl;
-    else {
-        qDebug()<<"open"<<endl;
-    }
+     string tmp;
+     vector<string> dataV,ansV;
+     while(getline(in,tmp)){
+         dataV.push_back(tmp);
+         getline(in,tmp);
+         ansV.push_back(tmp);
+     }
 
-    while (getline(in, tmp)) {
-        dataV.push_back(tmp);
-        getline(in, tmp);
-        ansV.push_back(tmp);
-    }
-    in.close();
+     in.close();
 
-    int n = rand() % dataV.size();
-    ans = ansV.at(n);
-
-    timer.restart();
-
-    return dataV.at(n);
+     int n = rand() %dataV.size();
+     this->ans = ansV.at(n);
+     qDebug()<<QString::fromStdString(dataV.at(n))<<endl;
+     qDebug()<<QString::fromStdString(ans)<<endl;
+     this->timer.restart();
+     return dataV.at(n);
 }
 
 bool Judge::submitData(string ans)
@@ -47,6 +38,5 @@ bool Judge::submitData(string ans)
     this->costtime = this->timer.nsecsElapsed();
     qDebug()<<QString::fromStdString(ans)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
-
     return ans == this->ans;
 }

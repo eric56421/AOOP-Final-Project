@@ -3,16 +3,18 @@
 
 #include "problemset.h"
 
+using namespace std;
+
 class Floor
 {
-public:
-    Floor();
-    Floor(ProblemSet *problem) {this->p = problem;}
-    void setProblem(ProblemSet *problem) {this->p = problem;}
-    ProblemSet *p;
-
-private:
-    int fn;
+    public:
+        Floor();
+        Floor(ProblemSet *problem) {this->p = problem;}
+        void setProblem(ProblemSet *problem) {this->p = problem;}
+        ProblemSet *p;
+        
+    private:
+        int fn;
 };
 
 #endif // FLOOR_H
