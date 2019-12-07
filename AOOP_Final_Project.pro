@@ -55,7 +55,8 @@ HEADERS += \
     problemset.h \
     scheduler.h \
     shortestandlongestpair.h \
-    shygame.h
+    shygame.h \
+    test.h
 
 FORMS += \
     mainwindow.ui
