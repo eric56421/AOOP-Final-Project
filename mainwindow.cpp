@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     setupDB();
 
     EE.setupPeopleInfo();
+
+    connect(&EE,SIGNAL(updateGUI()),this,SLOT(slot_update_data()));
 }
 
 MainWindow::~MainWindow()
@@ -59,22 +61,36 @@ void MainWindow::setupDB()
 
 }
 
-void MainWindow::on_buttonRun_clicked()
+void MainWindow::on_RunButton_clicked()
 {
-    Data result;
-
-    EE.run(ui->comboBox->currentIndex()+1);
-    result = EE.getData();
-
-    ui->lineTestdata->setText(QString::fromStdString(result.testdata));
-    ui->lineSubmitdata->setText(QString::fromStdString(result.submit));
-    ui->lineSpendtime->setText(QString::number(result.spendtime));
-    ui->lineCorrect->setText(QString::number(result.correct));
-
+    EE.run(ui->Slectfloorbox->currentIndex()+1);
 }
 
-void MainWindow::on_buttonPeopleInfo_clicked()
+void MainWindow::on_StartSimulationButton_clicked()
 {
-    ui->linePeopleDes->setText(QString::number(EE.floorPeople[ui->comboBox->currentIndex()+1].to));
-    ui->linePeopleNum->setText(QString::number(EE.floorPeople[ui->comboBox->currentIndex()+1].num));
+    ui->FinishLabel->hide();
+    EE.reset();
+    EE.startSimulation();
+}
+
+void MainWindow::on_PeopleInformationButton_clicked()
+{
+    ui->PeopleNumLine->setText(QString::number(EE.floorPeople[ui->Slectfloorbox->currentIndex()+1].to));
+    ui->DestinationLine->setText(QString::number(EE.floorPeople[ui->Slectfloorbox->currentIndex()+1].num));
+}
+
+void MainWindow::slot_update_data()
+{
+    Data result;
+    result = EE.getData();
+    if(result.nowfloor!=0){
+        ui->TestdataLine->setText(QString::fromStdString(result.testdata));
+        ui->SubmitdataLine->setText(QString::fromStdString(result.submit));
+        ui->SpendtimeLine->setText(QString::number(result.spendtime));
+        ui->CorrectLine->setText(QString::number(result.correct));
+        ui->ScoreLine->setText(QString::number(result.score));
+        ui->Slectfloorbox->setCurrentIndex(result.nowfloor-1);
+    }else if (result.nowfloor==0){
+        ui->FinishLabel->show();
+    }
 }

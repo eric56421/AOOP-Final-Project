@@ -3,6 +3,7 @@
 Judge::Judge()
 {
     timer.start();
+    score = 0;
 }
 
 string Judge::getData(int floorNum)
@@ -37,5 +38,7 @@ bool Judge::submitData(string ans)
     this->costtime = this->timer.nsecsElapsed();
     qDebug()<<QString::fromStdString(ans)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
+    if(ans==this->ans)
+        score+=100;
     return ans == this->ans;
 }

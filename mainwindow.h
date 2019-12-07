@@ -28,8 +28,14 @@ public:
     void setupDB();
 
 private slots:
-    void on_buttonRun_clicked();
-    void on_buttonPeopleInfo_clicked();
+    void on_RunButton_clicked();
+
+    void on_StartSimulationButton_clicked();
+
+    void on_PeopleInformationButton_clicked();
+
+public slots:
+    void slot_update_data();
 
 private:
     Ui::MainWindow *ui;

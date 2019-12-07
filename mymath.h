@@ -25,8 +25,6 @@ class MyMath : public ProblemSet
         string vectorIntToString(vector<int> v);
         vector<double> stringToVectorDouble(string s);
         string vectorDoubleToString(vector<double> v);
-
-        string vectorIntToStringOfFactorial(vector<int>);
         vector<Point3D> stringToVectorPoint3D(string s);
 };
 

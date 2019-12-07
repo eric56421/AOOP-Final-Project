@@ -14,6 +14,8 @@ class Data
         string testdata;
         string submit;
         bool correct;
+        int score;
+        int nowfloor;
 };
 
 #endif // DATA_H

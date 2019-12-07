@@ -16,11 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    add1.cpp \
     building.cpp \
     data.cpp \
     fibonaccioffibonacci.cpp \
-    findfactorial.cpp \
     findstructuresoftrees.cpp \
     floor.cpp \
     getsignature.cpp \
@@ -33,18 +31,15 @@ SOURCES += \
     myother.cpp \
     mytree.cpp \
     people.cpp \
-    prime.cpp \
     problemset.cpp \
+    scheduler.cpp \
     shortestandlongestpair.cpp \
-    shortestsummationdistance.cpp \
     shygame.cpp
 
 HEADERS += \
-    add1.h \
     building.h \
     data.h \
     fibonaccioffibonacci.h \
-    findfactorial.h \
     findstructuresoftrees.h \
     floor.h \
     getsignature.h \
@@ -56,11 +51,10 @@ HEADERS += \
     myother.h \
     mytree.h \
     people.h \
-    prime.h \
     problems.h \
     problemset.h \
+    scheduler.h \
     shortestandlongestpair.h \
-    shortestsummationdistance.h \
     shygame.h
 
 FORMS += \

@@ -20,11 +20,14 @@ class Judge
         string getData(int floorNum);
         bool submitData(string ans);
         qint64 getSpendTime() {return costtime;}
+        int getScore(){return score;}
+
     private:
         string ans;
         ifstream in;
         QElapsedTimer timer;
         qint64 costtime;
+        int score;
 };
 
 #endif // JUDGE_H

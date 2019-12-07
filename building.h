@@ -6,10 +6,12 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QTimer>
 
 #include <string>
 #include <cstdlib>
 
+#include "scheduler.h"
 #include "judge.h"
 #include "data.h"
 #include "floor.h"
@@ -18,22 +20,31 @@
 
 using namespace std;
 
-class Building
+class Building : public QObject
 {
-public:
-    Building();
-    void run(int floorNum);
-    Data getData() {return data;}
-    vector<People> floorPeople;
+    Q_OBJECT
+    public:
+        Building();
+        void run(int floorNum);
+        Data getData() {return data;}
+        void startSimulation();
+        void reset();
+        void setupPeopleInfo();
+        vector<People> floorPeople;
 
-    void setupPeopleInfo();
+    private:
+        const int peopleInfoState;
+        Judge judge;
+        Floor *floor[28];
+        Data data;
+        QTimer *timer;
+        Scheduler scheduler;
 
-private:
-    const int peopleInfoState;
-    Judge judge;
-    Floor *floor[31];
-    Data data;
+    public slots:
+        void update();
 
+    signals:
+        void updateGUI();
 };
 
 #endif // BUILDING_H

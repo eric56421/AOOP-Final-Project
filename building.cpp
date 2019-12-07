@@ -2,8 +2,6 @@
 
 Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states in data.csv
 {    
-        // destructor
-    //floor[0] = new Floor(new P1);
     floor[1] = new Floor(new P1);
     floor[2] = new Floor(new P2);
     floor[3] = new Floor(new P3);
@@ -11,9 +9,9 @@ Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states 
     floor[5] = new Floor(new P5);
     floor[6] = new Floor(new P6);
     floor[7] = new Floor(new P7);
-    floor[8] = new Floor(new P8);
-    floor[9] = new Floor(new P9);
-    floor[10] = new Floor(new P10);
+//    floor[8] = new Floor(new P8);
+//    floor[9] = new Floor(new P9);
+//    floor[10] = new Floor(new P10);
 //    floor[11] = new Floor(new P11);
 //    floor[12] = new Floor(new P12);
 //    floor[13] = new Floor(new P13);
@@ -24,6 +22,8 @@ Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states 
 //    floor[18] = new Floor(new P18);
 //    floor[19] = new Floor(new P19);
 //    floor[20] = new Floor(new P20);
+    timer = new QTimer;
+    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
 }
 
 void Building::setupPeopleInfo()
@@ -59,4 +59,28 @@ void Building::run(int floorNum)
     data.submit = floor[floorNum]->p->solve(data.testdata);
     data.correct = judge.submitData(data.submit);
     data.spendtime = judge.getSpendTime();
+    data.score = judge.getScore();
+}
+
+void Building::startSimulation()
+{
+    timer->start(1000);
+}
+
+void Building::update()
+{
+    data.nowfloor = scheduler.getNowFloor();
+    qDebug()<<data.nowfloor;
+    if(data.nowfloor!=0){
+        this->run(data.nowfloor);
+    }else{
+        timer->stop();
+    }
+    emit this->updateGUI();
+
+}
+
+void Building::reset()
+{
+    scheduler.reset();
 }
