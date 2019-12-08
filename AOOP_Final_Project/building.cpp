@@ -12,8 +12,8 @@ Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states 
     floor[8] = new Floor(new P8);//FindFactorial
     floor[9] = new Floor(new P9);//ShortestSummationDistance
     floor[10] = new Floor(new P10);//Add1
-//    floor[11] = new Floor(new P11);
-//    floor[12] = new Floor(new P12);
+    floor[11] = new Floor(new P11);//DistanceBetweenPrime
+    floor[12] = new Floor(new P12);//MarioOjisan
 //    floor[13] = new Floor(new P13);
 //    floor[14] = new Floor(new P14);
 //    floor[15] = new Floor(new P15);

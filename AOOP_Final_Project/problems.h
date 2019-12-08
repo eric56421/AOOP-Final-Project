@@ -31,11 +31,11 @@ typedef ShortestSummationDistance P9;
 #include "add1.h"
 typedef Add1 P10;
 
-//#include ""
-//typedef P11;
+#include "distancebetweenprime.h"
+typedef DistanceBetweenPrime P11;
 
-//#include ""
-//typedef P12;
+#include "marioojisan.h"
+typedef MarioOjisan P12;
 
 //#include ""
 //typedef P13;

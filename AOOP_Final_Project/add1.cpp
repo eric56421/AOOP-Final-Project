@@ -7,8 +7,12 @@ Add1::Add1()
 
 string Add1::solve(string s)
 {
-    in=stringToVectorInt(s);
-    for(int i=in.size()-1;i>=0;i--)
-        in.at(i)++;
-    return vectorIntToString(in);
+    stringstream ss,ans;
+    ss<<s;
+    while(ss>>n){
+        ans<<n+1<<" ";
+    }
+    s=ans.str();
+    s.erase(s.size()-1);
+    return s;
 }

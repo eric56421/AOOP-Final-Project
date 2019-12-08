@@ -19,6 +19,7 @@ SOURCES += \
     add1.cpp \
     building.cpp \
     data.cpp \
+    distancebetweenprime.cpp \
     fibonaccioffibonacci.cpp \
     findfactorial.cpp \
     findstructuresoftrees.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
     largesroot.cpp \
     main.cpp \
     mainwindow.cpp \
+    marioojisan.cpp \
     minesweeper.cpp \
     mymath.cpp \
     myother.cpp \
@@ -44,6 +46,7 @@ HEADERS += \
     add1.h \
     building.h \
     data.h \
+    distancebetweenprime.h \
     fibonaccioffibonacci.h \
     findfactorial.h \
     findstructuresoftrees.h \
@@ -52,6 +55,7 @@ HEADERS += \
     judge.h \
     largesroot.h \
     mainwindow.h \
+    marioojisan.h \
     minesweeper.h \
     mymath.h \
     myother.h \
