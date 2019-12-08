@@ -15,6 +15,9 @@ class Minesweeper : public MyOther
         int y;
     };
     int dir[8][2];
+    int row,col;
+    int c=0,gox,goy;
+    string tmp;
     public:
         Minesweeper();
         virtual string solve(string s) override;

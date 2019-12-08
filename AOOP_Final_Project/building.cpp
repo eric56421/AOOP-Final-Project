@@ -2,16 +2,16 @@
 
 Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states in data.csv
 {    
-    floor[1] = new Floor(new P1);
-    floor[2] = new Floor(new P2);
-    floor[3] = new Floor(new P3);
-    floor[4] = new Floor(new P4);
-    floor[5] = new Floor(new P5);
-    floor[6] = new Floor(new P6);
-    floor[7] = new Floor(new P7);
-//    floor[8] = new Floor(new P8);
-//    floor[9] = new Floor(new P9);
-//    floor[10] = new Floor(new P10);
+    floor[1] = new Floor(new P1);//ShortestAndLongestPair
+    floor[2] = new Floor(new P2);//Minesweeper
+    floor[3] = new Floor(new P3);//GetSignature
+    floor[4] = new Floor(new P4);//ShyGame
+    floor[5] = new Floor(new P5);//FibonacciOfFibonacci
+    floor[6] = new Floor(new P6);//LargesRoot
+    floor[7] = new Floor(new P7);//FindStructuresOfTrees
+    floor[8] = new Floor(new P8);//FindFactorial
+    floor[9] = new Floor(new P9);//ShortestSummationDistance
+    floor[10] = new Floor(new P10);//Add1
 //    floor[11] = new Floor(new P11);
 //    floor[12] = new Floor(new P12);
 //    floor[13] = new Floor(new P13);

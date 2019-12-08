@@ -16,7 +16,7 @@ FibonacciOfFibonacci::FibonacciOfFibonacci()
 
 string FibonacciOfFibonacci::solve(string s)
 {
-    vector<int> in=stringToVectorInt(s);
+    in=stringToVectorInt(s);
     for(int i=0;i<in.size();i++){
         in[i]=fibmod10[(fibmod60[in[i]%120])];
     }

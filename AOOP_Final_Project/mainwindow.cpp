@@ -64,6 +64,13 @@ void MainWindow::setupDB()
 void MainWindow::on_RunButton_clicked()
 {
     EE.run(ui->Slectfloorbox->currentIndex()+1);
+    Data result;
+    result = EE.getData();
+    ui->TestdataLine->setText(QString::fromStdString(result.testdata));
+    ui->SubmitdataLine->setText(QString::fromStdString(result.submit));
+    ui->SpendtimeLine->setText(QString::number(result.spendtime));
+    ui->CorrectLine->setText(QString::number(result.correct));
+    ui->ScoreLine->setText(QString::number(result.score));
 }
 
 void MainWindow::on_StartSimulationButton_clicked()

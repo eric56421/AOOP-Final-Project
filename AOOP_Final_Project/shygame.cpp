@@ -7,8 +7,9 @@ ShyGame::ShyGame()
 
 string ShyGame::solve(string s)
 {
-    vector<int> in = stringToVectorInt(s),people,out;
-    int n = in.at(0);
+    in = stringToVectorInt(s);
+    vector<int> out;
+    n = in.at(0);
     for(int i=1;i<in.size();i++){
 
         for(int j=0;j<n;j++)

@@ -7,11 +7,10 @@ ShortestAndLongestPair::ShortestAndLongestPair()
 
 string ShortestAndLongestPair::solve(string s)
 {
-    vector<Point3D> data = stringToVectorPoint3D(s);
+    data = stringToVectorPoint3D(s);
     vector<double> ans;//ans[0] shortest , ans[1] longest
     ans.push_back(DBL_MAX);
     ans.push_back(0);
-    double dx,dy,dz;
 
     for(int i=0;i<data.size()-1;i++){
         for(int j=i+1;j<data.size();j++){

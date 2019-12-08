@@ -10,6 +10,8 @@ using namespace std;
 
 class ShortestAndLongestPair : public MyMath
 {
+    vector<Point3D> data;
+    double dx,dy,dz;
     public:
         ShortestAndLongestPair();
         virtual string solve(string s) override;

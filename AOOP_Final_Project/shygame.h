@@ -9,6 +9,8 @@ using namespace std;
 
 class ShyGame : public MyMath
 {
+    vector<int> in,people;
+    int n;
     public:
         ShyGame();
         virtual string solve(string s) override;

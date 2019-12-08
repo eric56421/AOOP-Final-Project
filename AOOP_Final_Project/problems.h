@@ -22,14 +22,14 @@ typedef LargesRoot P6;
 #include "findstructuresoftrees.h"
 typedef FindStructuresOfTrees P7;
 
-//#include "findfactorial.h"
-//typedef FindFactorial P8;
+#include "findfactorial.h"
+typedef FindFactorial P8;
 
-//#include "shortestsummationdistance.h"
-//typedef ShortestSummationDistance P9;
+#include "shortestsummationdistance.h"
+typedef ShortestSummationDistance P9;
 
-//#include "add1.h"
-//typedef Add1 P10;
+#include "add1.h"
+typedef Add1 P10;
 
 //#include ""
 //typedef P11;

@@ -17,16 +17,13 @@ string Minesweeper::solve(string s)
     stringstream ss,ans;
     ss<<s;
 
-    int row,col;
     ss>>row>>col;
 
     vector<string> map;
-    string tmp;
     while(ss>>tmp){
         map.push_back(tmp);
     }
 
-    int c=0,gox,goy;
     for(int i=0;i<row;i++){
         for(int j=0;j<col;j++){
             if(map[i][j]=='.'){

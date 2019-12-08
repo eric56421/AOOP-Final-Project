@@ -9,6 +9,9 @@ using namespace std;
 
 class LargesRoot : public MyTree
 {
+    vector<double> in;
+    int maxnode;
+    double maxvalue;
     public:
         LargesRoot();
         virtual string solve(string s) override;

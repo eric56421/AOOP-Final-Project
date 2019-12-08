@@ -9,6 +9,7 @@ class FibonacciOfFibonacci : public MyMath
 {
     vector<int> fibmod60;
     vector<int> fibmod10;
+    vector<int> in;
     public:
         FibonacciOfFibonacci();
         virtual string solve(string s) override;
