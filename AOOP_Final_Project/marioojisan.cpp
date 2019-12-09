@@ -22,5 +22,9 @@ string MarioOjisan::solve(string s)
         ans.push_back(c);
         index+=numofcoin+1;
     }*/
+
+
     return vectorIntToString(ans);
 }
+
+//dp 去解
