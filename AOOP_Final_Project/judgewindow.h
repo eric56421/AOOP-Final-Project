@@ -18,6 +18,8 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "people.h"
+
 using namespace std;
 
 namespace Ui {
@@ -39,11 +41,18 @@ class JudgeWindow : public QWidget
     public:
         string getData(int floor,int b);//input 0-26  --> 1-27
         bool submitData(string ans);
-        void setSeed(int seed = time(NULL)){srand(seed);}
+        void setSeed(int seed = time(NULL)){srand(seed); peopleInfoState = rand()%300+1;}
         qint64 getSpendTime(){return costtime[floor];}
         int getConditionNum();//return 1-300
         int getDistance(){return distance;}
         void scheduleEnd();
+        void connectDB();
+        void setupProblemDB();
+        void setupPeopleDB();
+        void setupPeopleInfo();
+        void readPeopleInfo();
+        vector<People> floorPeople;
+
     private:
         string ans;
         ifstream in;
@@ -54,6 +63,7 @@ class JudgeWindow : public QWidget
         int questionnum[28];
         int distance;
         int floor;
+        int peopleInfoState;
 };
 
 #endif // JUDGEWINDOW_H

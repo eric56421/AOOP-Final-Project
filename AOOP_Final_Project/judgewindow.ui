@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>634</width>
-    <height>477</height>
+    <width>1117</width>
+    <height>663</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>40</x>
      <y>80</y>
-     <width>541</width>
-     <height>321</height>
+     <width>981</width>
+     <height>511</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="ShowInformation"/>

@@ -25,9 +25,11 @@ Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states 
     timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
 
-    judgeWindow.show();
     judgeWindow.setSeed(0);
+    judgeWindow.setupPeopleInfo();
+    judgeWindow.readPeopleInfo();
     peopleInfoState = judgeWindow.getConditionNum();
+    judgeWindow.show();
 }
 
 void Building::setupPeopleInfo()
@@ -43,7 +45,7 @@ void Building::setupPeopleInfo()
     //qDebug()<<QString::fromStdString(selectQuery);
     query.exec(selectQuery.c_str());
 
-    floorPeople.resize(11);
+    floorPeople.resize(28);
     while (query.next()) {
         int at, to, num;
 
@@ -57,18 +59,18 @@ void Building::setupPeopleInfo()
     }
 }
 
-void Building::run(int floorNum)
+void Building::run(int floorNum, int b)
 {
-    data.testdata = judgeWindow.getData(floorNum);
+    data.testdata = judgeWindow.getData(floorNum, b);
     data.submit = floor[floorNum]->p->solve(data.testdata);
     data.correct = judgeWindow.submitData(data.submit);
     data.spendtime = judgeWindow.getSpendTime();
-    data.score = judgeWindow.getScore();
 }
 
 void Building::startSimulation()
 {
-    timer->start(1000);
+    timer->start(100);
+    timer->setSingleShot(true);
 }
 
 void Building::update()
@@ -76,12 +78,13 @@ void Building::update()
     data.nowfloor = scheduler.getNowFloor();
     qDebug()<<data.nowfloor;
     if(data.nowfloor!=0){
-        this->run(data.nowfloor);
+        this->run(data.nowfloor, 0);
     }else{
         timer->stop();
     }
-    emit this->updateGUI();
 
+    timer->start(100);
+    emit this->updateGUI();
 }
 
 void Building::reset()

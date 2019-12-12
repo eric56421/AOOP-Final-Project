@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     connectDB();
-    setupDB();
+    //setupPeolpleDB();
 
     EE.setupPeopleInfo();
 
@@ -86,7 +86,7 @@ void MainWindow::setupPeopleDB()
 
 void MainWindow::on_RunButton_clicked()
 {
-    EE.run(ui->Slectfloorbox->currentIndex()+1);
+    EE.run(ui->Slectfloorbox->currentIndex()+1, 0);
     Data result;
     result = EE.getData();
     ui->TestdataLine->setText(QString::fromStdString(result.testdata));

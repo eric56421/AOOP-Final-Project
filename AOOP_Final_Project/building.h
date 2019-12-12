@@ -26,11 +26,11 @@ class Building : public QObject
     Q_OBJECT
     public:
         Building();
-        void run(int floorNum);
+        void run(int floorNum, int b);
         Data getData() {return data;}
         void startSimulation();
         void reset();
-        void setupPeopleInfo();
+        void setupPeopleInfo();        
         vector<People> floorPeople;
 
     private:
