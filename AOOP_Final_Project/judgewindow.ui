@@ -16,13 +16,13 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>150</y>
-     <width>160</width>
-     <height>80</height>
+     <x>40</x>
+     <y>80</y>
+     <width>541</width>
+     <height>321</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout"/>
+   <layout class="QGridLayout" name="ShowInformation"/>
   </widget>
  </widget>
  <resources/>

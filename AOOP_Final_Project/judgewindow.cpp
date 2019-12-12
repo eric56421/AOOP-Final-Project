@@ -7,7 +7,11 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     timer.start();
-    score = 0;
+    for(int i=0;i<27;i++){
+        costtime[i]=0;
+        correctansnum[i]=0;
+        questionnum[i]=0;
+    }
     distance = 0;
 }
 

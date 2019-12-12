@@ -29,6 +29,7 @@ class JudgeWindow : public QWidget
 
     private:
         Ui::JudgeWindow *ui;
+        //QLineEdit showline[27][4];
 
     public:
         string getData(int floor,int b);//input 0-26
