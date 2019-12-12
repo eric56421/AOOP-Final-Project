@@ -7,8 +7,17 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     timer.start();
-    score = 0;
+    for(int i=0;i<28;i++){
+        costtime[i]=0;
+        correctansnum[i]=0;
+        questionnum[i]=0;
+    }
     distance = 0;
+    for(int i=0;i<27;i++){
+        for(int j=0;j<4;j++){
+            ui->ShowInformation->addWidget(&showline[i][j],i,j);
+        }
+    }
 }
 
 JudgeWindow::~JudgeWindow()
@@ -39,11 +48,12 @@ string JudgeWindow::getData(int floor,int b)
 
 bool JudgeWindow::submitData(string ans)
 {
-    this->costtime = this->timer.nsecsElapsed();
+    this->costtime[floor] += this->timer.nsecsElapsed();
     qDebug()<<QString::fromStdString(ans)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
-    if(ans==this->ans)
-        score+=100;
+    if(ans == this->ans)
+        correctansnum[floor]++;
+    questionnum[floor]++;
     return ans == this->ans;
 }
 
