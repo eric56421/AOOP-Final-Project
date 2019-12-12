@@ -13,6 +13,7 @@
 
 #include "scheduler.h"
 #include "judge.h"
+#include "judgewindow.h"
 #include "data.h"
 #include "floor.h"
 #include "people.h"
@@ -33,8 +34,9 @@ class Building : public QObject
         vector<People> floorPeople;
 
     private:
-        const int peopleInfoState;
-        Judge judge;
+        int peopleInfoState;
+        //Judge judge;
+        JudgeWindow judgeWindow;
         Floor *floor[28];
         Data data;
         QTimer *timer;

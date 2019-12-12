@@ -24,6 +24,10 @@ Building::Building() : peopleInfoState(rand()%30 + 1)  // 30 is the # of states 
 //    floor[20] = new Floor(new P20);
     timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
+
+    judgeWindow.show();
+    judgeWindow.setSeed(0);
+    peopleInfoState = judgeWindow.getConditionNum();
 }
 
 void Building::setupPeopleInfo()
@@ -55,11 +59,11 @@ void Building::setupPeopleInfo()
 
 void Building::run(int floorNum)
 {
-    data.testdata = judge.getData(floorNum);
+    data.testdata = judgeWindow.getData(floorNum);
     data.submit = floor[floorNum]->p->solve(data.testdata);
-    data.correct = judge.submitData(data.submit);
-    data.spendtime = judge.getSpendTime();
-    data.score = judge.getScore();
+    data.correct = judgeWindow.submitData(data.submit);
+    data.spendtime = judgeWindow.getSpendTime();
+    data.score = judgeWindow.getScore();
 }
 
 void Building::startSimulation()

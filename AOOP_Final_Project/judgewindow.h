@@ -6,6 +6,10 @@
 #include <QtGlobal>
 #include <QElapsedTimer>
 #include <QDebug>
+#include <QSqlResult>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
 
 #include <string>
 #include <fstream>
@@ -31,9 +35,9 @@ class JudgeWindow : public QWidget
         Ui::JudgeWindow *ui;
 
     public:
-        string getData(int floor,int b);//input 0-26
+        string getData(int floor,int b);//input 0-26  --> 1-27
         bool submitData(string ans);
-        void setSeed(int seed){srand(seed);}
+        void setSeed(int seed = time(NULL)){srand(seed);}
         qint64 getSpendTime(){return costtime;}
         int getConditionNum();//return 1-300
         int getDistance(){return distance;}
