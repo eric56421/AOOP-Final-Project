@@ -24,6 +24,58 @@
    </property>
    <layout class="QGridLayout" name="ShowInformation"/>
   </widget>
+  <widget class="QLabel" name="WaitToLeaveLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>100</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wait To Leave</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ArrivePeopleLabel">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>50</y>
+     <width>100</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Arrive people</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="TotalCostLabel">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>50</y>
+     <width>100</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TotalCost</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="WinOrLostLabel">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>50</y>
+     <width>100</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>WinOrLost</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
