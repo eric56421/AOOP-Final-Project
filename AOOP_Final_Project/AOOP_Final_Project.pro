@@ -26,6 +26,7 @@ SOURCES += \
     floor.cpp \
     getsignature.cpp \
     judge.cpp \
+    judgewindow.cpp \
     largesroot.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     floor.h \
     getsignature.h \
     judge.h \
+    judgewindow.h \
     largesroot.h \
     mainwindow.h \
     marioojisan.h \
@@ -69,6 +71,7 @@ HEADERS += \
     shygame.h
 
 FORMS += \
+    judgewindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

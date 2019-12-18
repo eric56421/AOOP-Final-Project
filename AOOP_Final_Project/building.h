@@ -12,7 +12,7 @@
 #include <cstdlib>
 
 #include "scheduler.h"
-#include "judge.h"
+#include "judgewindow.h"
 #include "data.h"
 #include "floor.h"
 #include "people.h"
@@ -25,20 +25,23 @@ class Building : public QObject
     Q_OBJECT
     public:
         Building();
-        void run(int floorNum);
+        void run(int floorNum,int b);
         Data getData() {return data;}
         void startSimulation();
         void reset();
-        void setupPeopleInfo();
+        void setupPeopleInfo(int);
         vector<People> floorPeople;
 
     private:
-        const int peopleInfoState;
-        Judge judge;
+        JudgeWindow judge;
         Floor *floor[28];
         Data data;
         QTimer *timer;
-        Scheduler scheduler;
+        Scheduler scheduler;        
+
+        void connectMySQL();
+        void setupProblemTB();
+        void setupPeopleTB();
 
     public slots:
         void update();

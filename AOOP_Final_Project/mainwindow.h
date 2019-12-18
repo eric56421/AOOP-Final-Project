@@ -24,14 +24,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void connectDB();
-    void setupDB();
-
 private slots:
     void on_RunButton_clicked();
-
     void on_StartSimulationButton_clicked();
-
     void on_PeopleInformationButton_clicked();
 
 public slots:
