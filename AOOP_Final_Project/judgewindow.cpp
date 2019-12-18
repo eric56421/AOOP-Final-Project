@@ -13,7 +13,7 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
         questionnum[i]=0;
     }
     distance = 0;
-
+    floor = 1;
     for(int i=0;i<27;i++){
         for(int j=0;j<4;j++){
             ui->InformationGridLayOut->addWidget(&showline[i][j],i,j);
@@ -38,8 +38,7 @@ string JudgeWindow::getData(int floor,int b)
     queryCmd = "select count(Floor) from problemlist where Floor =";
     queryCmd += to_string(floor) + ";";
     query.exec(queryCmd.c_str());
-    qDebug()<<query.value(0).toInt();
-    int num = query.value(1).toInt();
+    int num = query.value(0).toInt();
 
     int n = rand() % num;
     queryCmd = "select * from problemlist where ID like ";
@@ -63,6 +62,11 @@ string JudgeWindow::getData(int floor,int b)
     qDebug()<<QString::fromStdString(question)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
 
+
+    distance+=abs(this->floor-floor);
+    if(b==0)
+
+    showPeopleInfo();
     this->floor = floor;
     this->timer.restart();
     return question;
@@ -76,8 +80,6 @@ bool JudgeWindow::submitData(string ans)
     if(ans == this->ans)
         correctansnum[floor]++;
     questionnum[floor]++;
-
-    showPeopleInfo();
 
     return ans == this->ans;
 }
@@ -104,6 +106,7 @@ void JudgeWindow::reset()
         questionnum[i]=0;
     }
     distance = 0;
+    floor = 1;
     arrival.resize(28);
     for(int i=0;i<28;i++)
         arrival.at(i)=0;
@@ -118,8 +121,8 @@ void JudgeWindow::showPeopleInfo()
 {
     for(int i=0; i<27; i++) {
         qDebug()<<i<<" "<<floorPeople.at(i).num;
-        showline[i][0].setText(QString::number(floorPeople.at(i+1).num));
-        showline[i][1].setText(QString::number(arrival.at(i+1)));
+        //showline[i][0].setText(QString::number(floorPeople.at(i+1).num));
+        //showline[i][1].setText(QString::number(arrival.at(i+1)));
         showline[i][2].setText(QString::number(costtime[i+1]));
     }
 }

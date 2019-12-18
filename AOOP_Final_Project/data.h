@@ -3,6 +3,7 @@
 
 #include <string>
 #include <QtGlobal>
+#include <people.h>
 
 using namespace std;
 
@@ -14,8 +15,9 @@ class Data
         string testdata;
         string submit;
         bool correct;
-        int score;
+        int distance;
         int nowfloor;
+        int peopleinelevator;
 };
 
 #endif // DATA_H

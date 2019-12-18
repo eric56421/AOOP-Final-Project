@@ -26,7 +26,6 @@ void MainWindow::on_RunButton_clicked()
     ui->SubmitdataLine->setText(QString::fromStdString(result.submit));
     ui->SpendtimeLine->setText(QString::number(result.spendtime));
     ui->CorrectLine->setText(QString::number(result.correct));
-    ui->ScoreLine->setText(QString::number(result.score));
 }
 
 void MainWindow::on_StartSimulationButton_clicked()
@@ -51,7 +50,6 @@ void MainWindow::slot_update_data()
         ui->SubmitdataLine->setText(QString::fromStdString(result.submit));
         ui->SpendtimeLine->setText(QString::number(result.spendtime));
         ui->CorrectLine->setText(QString::number(result.correct));
-        ui->ScoreLine->setText(QString::number(result.score));
         ui->Slectfloorbox->setCurrentIndex(result.nowfloor-1);
     }else if (result.nowfloor==0){
         ui->FinishLabel->show();

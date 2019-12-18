@@ -37,6 +37,7 @@ SOURCES += \
     mytree.cpp \
     people.cpp \
     problemset.cpp \
+    runinformation.cpp \
     scheduler.cpp \
     setfactorial.cpp \
     shortestandlongestpair.cpp \
@@ -66,6 +67,7 @@ HEADERS += \
     people.h \
     problems.h \
     problemset.h \
+    runinformation.h \
     scheduler.h \
     shortestandlongestpair.h \
     shortestsummationdistance.h \

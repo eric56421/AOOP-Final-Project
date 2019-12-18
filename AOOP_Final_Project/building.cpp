@@ -137,22 +137,30 @@ void Building::startSimulation()
     judge.reset();
     judge.setupPeopleInfo(floorPeople);
     judge.showPeopleInfo();
+    scheduler.solve(floorPeople);
     timer->start(100);
     timer->setSingleShot(true);
 }
 
 void Building::update()
 {
-
-    data.nowfloor = scheduler.getNowFloor();
-    qDebug()<<data.nowfloor;
-    if(data.nowfloor!=0){
-        this->run(data.nowfloor,0);
-    }else{
+    RunInformation nowstate=scheduler.getSchedular();
+    if(nowstate.num==0&&nowstate.inorout=='E'&&nowstate.floor==0){
         timer->stop();
+    }else{
+        if(nowstate.inorout=='I'){
+            floorPeople.at(nowstate.floor).num-=nowstate.num;
+        }else if(nowstate.inorout=='O'){
+            arrival.at(nowstate.floor)+=nowstate.num;
+        }
+        judge.showline[nowstate.floor-1][0].setText(QString::number(floorPeople.at(nowstate.floor).num));
+        judge.showline[nowstate.floor-1][1].setText(QString::number(arrival.at(nowstate.floor)));
+        for(int i=0;i<nowstate.num;i++){
+            this->run(nowstate.floor,nowstate.inorout=='I'?1:0);
+        }
+        timer->start(100);
+        emit this->updateGUI();
     }
-    timer->start(100);
-    emit this->updateGUI();
 }
 
 void Building::reset()

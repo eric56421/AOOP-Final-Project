@@ -2,6 +2,10 @@
 #define SCHEDULER_H
 
 #include <vector>
+#include <QtDebug>
+
+#include "people.h"
+#include "runinformation.h"
 
 using namespace std;
 
@@ -9,10 +13,11 @@ class Scheduler
 {
     public:
         Scheduler();
-        int getNowFloor();
+        RunInformation getSchedular();
         void reset();
+        void solve(vector<People>);
     private:
-        vector<int> nowFloor;
+        vector<RunInformation> runschedular;
         int index;
 };
 

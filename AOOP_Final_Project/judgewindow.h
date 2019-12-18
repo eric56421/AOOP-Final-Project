@@ -33,10 +33,10 @@ class JudgeWindow : public QWidget
     public:
         explicit JudgeWindow(QWidget *parent = nullptr);
         ~JudgeWindow();
+        QLineEdit showline[27][4];
 
     private:
         Ui::JudgeWindow *ui;
-        QLineEdit showline[27][4];
 
     public:
         string getData(int floor,int b);//input 0-26  --> 1-27

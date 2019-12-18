@@ -31,6 +31,7 @@ class Building : public QObject
         void reset();
         void setupPeopleInfo(int);
         vector<People> floorPeople;
+        vector<int> arrival;
 
     private:
         JudgeWindow judge;
