@@ -40,7 +40,8 @@ SOURCES += \
     setfactorial.cpp \
     shortestandlongestpair.cpp \
     shortestsummationdistance.cpp \
-    shygame.cpp
+    shygame.cpp \
+    subtract1.cpp
 
 HEADERS += \
     add1.h \
@@ -66,7 +67,8 @@ HEADERS += \
     scheduler.h \
     shortestandlongestpair.h \
     shortestsummationdistance.h \
-    shygame.h
+    shygame.h \
+    subtract1.h
 
 FORMS += \
     mainwindow.ui

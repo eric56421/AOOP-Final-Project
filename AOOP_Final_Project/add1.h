@@ -3,7 +3,6 @@
 
 #include "mymath.h"
 
-
 using namespace std;
 
 class Add1 : public MyMath
