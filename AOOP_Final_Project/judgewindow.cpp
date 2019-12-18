@@ -38,11 +38,14 @@ string JudgeWindow::getData(int floor,int b)
     queryCmd = "select count(Floor) from problemlist where Floor =";
     queryCmd += to_string(floor) + ";";
     query.exec(queryCmd.c_str());
-    qDebug()<<query.value(0).toInt();
-    int num = query.value(1).toInt();
+
+    query.first();
+    qDebug()<<floor<<"  "<<query.value(0).toInt();
+    int num = query.value(0).toInt();
 
     int n = rand() % num;
-    queryCmd = "select * from problemlist where ID like ";
+    qDebug()<<n;
+    queryCmd = "select * from problemlist where ID like \'";
     if (1<=floor && floor<=9)
         queryCmd += "0" + to_string(floor);
     else {
@@ -55,11 +58,13 @@ string JudgeWindow::getData(int floor,int b)
         n %= tmp;
         tmp /= 10;
     }
-    queryCmd += ";";
+    queryCmd += "\';";
     query.exec(queryCmd.c_str());
+    qDebug()<<floor<<"  "<<QString::fromStdString(queryCmd);
 
-    string question = query.value(3).toString().toStdString();
-    this->ans = query.value(4).toString().toStdString();
+    query.next();
+    string question = query.value(2).toString().toStdString();
+    this->ans = query.value(3).toString().toStdString();
     qDebug()<<QString::fromStdString(question)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
 
@@ -111,7 +116,8 @@ void JudgeWindow::reset()
 
 void JudgeWindow::setupPeopleInfo(const vector<People> &in)
 {
-       floorPeople=in;
+        floorPeople.clear();
+        floorPeople=in;
 }
 
 void JudgeWindow::showPeopleInfo()

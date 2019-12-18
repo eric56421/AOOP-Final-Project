@@ -13,12 +13,13 @@ Scheduler::Scheduler()
     nowFloor.push_back(5);
     nowFloor.push_back(2);
     nowFloor.push_back(0);
+
     index = 0;
 }
 
 int Scheduler::getNowFloor()
-{
-    return nowFloor.at(index++);
+{    
+    return nowFloor.at(++index);
 }
 
 void Scheduler::reset()
