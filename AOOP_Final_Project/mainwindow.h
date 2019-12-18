@@ -25,7 +25,8 @@ public:
     ~MainWindow();
 
     void connectDB();
-    void setupDB();
+    void setupProblemDB();
+    void setupPeopleDB();
 
 private slots:
     void on_RunButton_clicked();

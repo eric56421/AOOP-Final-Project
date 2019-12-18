@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     connectDB();
-    setupDB();
+    //setupPeolpleDB();
 
     EE.setupPeopleInfo();
 
@@ -28,8 +28,8 @@ void MainWindow::connectDB()
     database.setPort(3306);
     database.setUserName("root");
 
-    //database.setPassword("nctuece");
-    database.setPassword("123456");
+    database.setPassword("nctuece");
+    //database.setPassword("123456");
 
     bool ok = database.open();
     if (ok) {
@@ -37,33 +37,56 @@ void MainWindow::connectDB()
     } else {
         qDebug()<<"Error: Cannot connect!!!";
     }
+
+    QSqlQuery query;
+
+    query.exec("DROP DATABASE IF EXISTS FINAL;");
+    query.exec("CREATE DATABASE FINAL;");
+    query.exec("USE FINAL;");
 }
 
-void MainWindow::setupDB()
+void MainWindow::setupProblemDB()
 {
     QSqlQuery query;
 
-    query.exec("DROP DATABASE IF EXISTS Course6;");
-    query.exec("CREATE DATABASE Course6;");
-    query.exec("USE Course6;");
-    query.exec("DROP TABLE IF EXISTS peoplelist;");
-    query.exec("CREATE TABLE peoplelist\
-                (Id varchar(8), Nowfloor int, Destination int, Num int,\
-                PRIMARY KEY (Id));");
+    query.exec("USE FINAL;");
+    query.exec("DROP TABLE IF EXISTS problemlist;");
+    query.exec("CREATE TABLE problemlist\
+                (ID varchar(8), Floor int, Question text, Answer text,\
+                PRIMARY KEY (ID));");
 
-    if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/data.csv' \
-                    INTO TABLE peoplelist  \
+    if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/testdata.csv' \
+                    INTO TABLE problemlist  \
                     FIELDS TERMINATED BY ','  \
-                    ENCLOSED BY \"\" \
-                    LINES TERMINATED BY '\n' \
+                    ENCLOSED BY \"\"\"\" \
+                    LINES TERMINATED BY '\r\n' \
                     IGNORE 1 ROWS;"))
         qDebug()<<query.lastError().text();
 
 }
 
+void MainWindow::setupPeopleDB()
+{
+    QSqlQuery query;
+
+    query.exec("USE FINAL;");
+    query.exec("DROP TABLE IF EXISTS peoplelist;");
+    query.exec("CREATE TABLE peoplelist\
+                (Id varchar(8), Nowfloor int, Destination int, Number int,\
+                PRIMARY KEY (Id));");
+
+    if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/initial_condition.csv' \
+                    INTO TABLE peoplelist  \
+                    FIELDS TERMINATED BY ','  \
+                    ENCLOSED BY \"\"\"\" \
+                    LINES TERMINATED BY '\n' \
+                    IGNORE 1 ROWS;"))
+        qDebug()<<query.lastError().text();
+}
+
 void MainWindow::on_RunButton_clicked()
 {
-    EE.run(ui->Slectfloorbox->currentIndex()+1);
+    EE.run(ui->Slectfloorbox->currentIndex()+1, 0);
     Data result;
     result = EE.getData();
     ui->TestdataLine->setText(QString::fromStdString(result.testdata));
