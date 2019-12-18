@@ -143,6 +143,12 @@ void Building::startSimulation()
     judge.reset();
     judge.setupPeopleInfo(floorPeople);
     judge.showPeopleInfo();
+    for(int i=0; i<27; i++) {
+        //qDebug()<<i<<" "<<floorPeople.at(i).num;
+        judge.showline[i][0].setText(QString::number(floorPeople.at(i+1).num));
+        judge.showline[i][1].setText(QString::number(arrival[i+1]));
+    }
+    judge.showPeopleInfo();
     scheduler.solve(floorPeople);
     timer->start(100);
     timer->setSingleShot(true);
@@ -157,12 +163,14 @@ void Building::update()
         if(nowstate.inorout=='I'){
             floorPeople.at(nowstate.floor).num-=nowstate.num;
         }else if(nowstate.inorout=='O'){
-            arrival.at(nowstate.floor)+=nowstate.num;
+            arrival[nowstate.floor]+=nowstate.num;
         }
         judge.showline[nowstate.floor-1][0].setText(QString::number(floorPeople.at(nowstate.floor).num));
-        judge.showline[nowstate.floor-1][1].setText(QString::number(arrival.at(nowstate.floor)));
-        for(int i=0;i<nowstate.num;i++){
-            this->run(nowstate.floor,nowstate.inorout=='I'?1:0);
+        judge.showline[nowstate.floor-1][1].setText(QString::number(arrival[nowstate.floor]));
+        if(nowstate.floor<12){//到時砍掉題目沒寫完
+            for(int i=0;i<nowstate.num;i++){
+                this->run(nowstate.floor,nowstate.inorout=='I'?1:0);
+            }
         }
         timer->start(100);
         emit this->updateGUI();
@@ -172,4 +180,6 @@ void Building::update()
 void Building::reset()
 {
     scheduler.reset();
+    for(int i=0;i<28;i++)
+        arrival[i]=0;
 }

@@ -40,11 +40,11 @@ string JudgeWindow::getData(int floor,int b)
     query.exec(queryCmd.c_str());
 
     query.first();
-    qDebug()<<floor<<"  "<<query.value(0).toInt();
+    //qDebug()<<floor<<"  "<<query.value(0).toInt();
     int num = query.value(0).toInt();
 
     int n = rand() % num;
-    qDebug()<<n;
+    //qDebug()<<n;
     queryCmd = "select * from problemlist where ID like \'";
     if (1<=floor && floor<=9)
         queryCmd += "0" + to_string(floor);
@@ -60,7 +60,7 @@ string JudgeWindow::getData(int floor,int b)
     }
     queryCmd += "\';";
     query.exec(queryCmd.c_str());
-    qDebug()<<floor<<"  "<<QString::fromStdString(queryCmd);
+    //qDebug()<<floor<<"  "<<QString::fromStdString(queryCmd);
 
     query.next();
     string question = query.value(2).toString().toStdString();
@@ -70,9 +70,6 @@ string JudgeWindow::getData(int floor,int b)
 
 
     distance+=abs(this->floor-floor);
-    if(b==0)
-
-    showPeopleInfo();
     this->floor = floor;
     this->timer.restart();
     return question;
@@ -83,6 +80,7 @@ bool JudgeWindow::submitData(string ans)
     this->costtime[floor] += this->timer.nsecsElapsed();
     qDebug()<<QString::fromStdString(ans)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
+    showPeopleInfo();
     if(ans == this->ans)
         correctansnum[floor]++;
     questionnum[floor]++;
@@ -127,7 +125,7 @@ void JudgeWindow::setupPeopleInfo(const vector<People> &in)
 void JudgeWindow::showPeopleInfo()
 {
     for(int i=0; i<27; i++) {
-        qDebug()<<i<<" "<<floorPeople.at(i).num;
+        //qDebug()<<i<<" "<<floorPeople.at(i).num;
         //showline[i][0].setText(QString::number(floorPeople.at(i+1).num));
         //showline[i][1].setText(QString::number(arrival.at(i+1)));
         showline[i][2].setText(QString::number(costtime[i+1]));
