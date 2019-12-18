@@ -45,9 +45,11 @@ class JudgeWindow : public QWidget
         qint64 getSpendTime(){return costtime[floor];}
         int getConditionNum(){return peopleInfoState;}//return 1-300
         int getDistance(){return distance;}
+        int getFloor(){return floor;}
+        int getPeopleInElevator(){return peopleinelevator;}
         void scheduleEnd();
         void reset();
-        void setupPeopleInfo(const vector<People> &);
+        //void setupPeopleInfo(const vector<People> &);
         void showPeopleInfo();
     private:
         string ans;
@@ -59,8 +61,9 @@ class JudgeWindow : public QWidget
         int distance;
         int floor;
         int peopleInfoState;
-        vector<People> floorPeople;
-        vector<int> arrival;
+        int peopleinelevator;
+        //vector<People> floorPeople;
+        //vector<int> arrival;
 };
 
 #endif // JUDGEWINDOW_H

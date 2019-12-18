@@ -51,6 +51,9 @@ void MainWindow::slot_update_data()
         ui->SpendtimeLine->setText(QString::number(result.spendtime));
         ui->CorrectLine->setText(QString::number(result.correct));
         ui->Slectfloorbox->setCurrentIndex(result.nowfloor-1);
+        ui->DistanceLCD->display(result.distance);
+        ui->PeopleInElevatorLCD->display(result.peopleinelevator);
+        ui->NowElevatorLCD->display(result.nowfloor);
     }else if (result.nowfloor==0){
         ui->FinishLabel->show();
     }

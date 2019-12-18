@@ -136,12 +136,15 @@ void Building::run(int floorNum, int b)
     data.submit = floor[floorNum]->p->solve(data.testdata);
     data.correct = judge.submitData(data.submit);
     data.spendtime = judge.getSpendTime();
+    data.nowfloor = judge.getFloor();
+    data.distance = judge.getDistance();
+    data.peopleinelevator = judge.getPeopleInElevator();
 }
 
 void Building::startSimulation()
 {
     judge.reset();
-    judge.setupPeopleInfo(floorPeople);
+    //judge.setupPeopleInfo(floorPeople);
     judge.showPeopleInfo();
     for(int i=0; i<27; i++) {
         //qDebug()<<i<<" "<<floorPeople.at(i).num;
@@ -159,6 +162,7 @@ void Building::update()
     RunInformation nowstate=scheduler.getSchedular();
     if(nowstate.num==0&&nowstate.inorout=='E'&&nowstate.floor==0){
         timer->stop();
+        judge.scheduleEnd();
     }else{
         if(nowstate.inorout=='I'){
             floorPeople.at(nowstate.floor).num-=nowstate.num;
@@ -170,11 +174,12 @@ void Building::update()
         if(nowstate.floor<12){//到時砍掉題目沒寫完
             for(int i=0;i<nowstate.num;i++){
                 this->run(nowstate.floor,nowstate.inorout=='I'?1:0);
+                emit this->updateGUI();
             }
         }
         timer->start(100);
-        emit this->updateGUI();
     }
+    emit this->updateGUI();
 }
 
 void Building::reset()

@@ -14,14 +14,15 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
     }
     distance = 0;
     floor = 1;
+    peopleinelevator=0;
     for(int i=0;i<27;i++){
         for(int j=0;j<4;j++){
             ui->InformationGridLayOut->addWidget(&showline[i][j],i,j);
         }
     }
-    arrival.resize(28);
-    for(int i=0;i<28;i++)
-        arrival.at(i)=0;
+//    arrival.resize(28);
+//    for(int i=0;i<28;i++)
+//        arrival.at(i)=0;
 }
 
 JudgeWindow::~JudgeWindow()
@@ -68,7 +69,11 @@ string JudgeWindow::getData(int floor,int b)
     qDebug()<<QString::fromStdString(question)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
 
-
+    if(b==0)
+        peopleinelevator--;
+    else if(b==1)
+        peopleinelevator++;
+    qDebug()<<b<<floor<<this->floor;
     distance+=abs(this->floor-floor);
     this->floor = floor;
     this->timer.restart();
@@ -96,7 +101,7 @@ void JudgeWindow::scheduleEnd()
     }else{
         qDebug()<<"open file successful"<<endl;
     }
-    for(int i=0;i<27;i++)
+    for(int i=1;i<28;i++)
         out<<i<<","<<costtime[i]<<","<<correctansnum[i]<<","<<questionnum[i]<<endl;
 
     out.close();
@@ -111,16 +116,16 @@ void JudgeWindow::reset()
     }
     distance = 0;
     floor = 1;
-    arrival.resize(28);
-    for(int i=0;i<28;i++)
-        arrival.at(i)=0;
+//    arrival.resize(28);
+//    for(int i=0;i<28;i++)
+//        arrival.at(i)=0;
 }
 
-void JudgeWindow::setupPeopleInfo(const vector<People> &in)
-{
-        floorPeople.clear();
-        floorPeople=in;
-}
+//void JudgeWindow::setupPeopleInfo(const vector<People> &in)
+//{
+//        floorPeople.clear();
+//        floorPeople=in;
+//}
 
 void JudgeWindow::showPeopleInfo()
 {
