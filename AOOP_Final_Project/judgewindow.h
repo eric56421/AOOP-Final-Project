@@ -40,22 +40,17 @@ class JudgeWindow : public QWidget
 
     public:
         string getData(int floor,int b);//input 0-26  --> 1-27
-        bool submitData(string ans);
         void setSeed(int seed = time(NULL)){srand(seed); peopleInfoState = rand()%300+1;}
+        bool submitData(string ans);
         qint64 getSpendTime(){return costtime[floor];}
-        int getConditionNum();//return 1-300
+        int getConditionNum(){return peopleInfoState;}//return 1-300
         int getDistance(){return distance;}
         void scheduleEnd();
-        void connectDB();
-        void setupProblemDB();
-        void setupPeopleDB();
-        void setupPeopleInfo();
-        void readPeopleInfo();
-        vector<People> floorPeople;
-
+        void reset();
+        void setupPeopleInfo(const vector<People> &);
+        void showPeopleInfo();
     private:
         string ans;
-        ifstream in;
         ofstream out;
         QElapsedTimer timer;
         qint64 costtime[28];
@@ -64,6 +59,8 @@ class JudgeWindow : public QWidget
         int distance;
         int floor;
         int peopleInfoState;
+        vector<People> floorPeople;
+        vector<int> arrival;
 };
 
 #endif // JUDGEWINDOW_H
