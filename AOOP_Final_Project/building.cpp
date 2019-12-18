@@ -5,6 +5,7 @@ Building::Building()  // 30 is the # of states in data.csv
     connectMySQL();
     setupPeopleTB();
     setupProblemTB();
+
     floor[1] = new Floor(new P1);//ShortestAndLongestPair
     floor[2] = new Floor(new P2);//Minesweeper
     floor[3] = new Floor(new P3);//GetSignature
@@ -101,27 +102,32 @@ void Building::setupPeopleInfo(int peopleInfoState)
 {
     QSqlQuery query;
 
-    string selectQuery = "SELECT * FROM peoplelist WHERE Id LIKE '%-%';";
-    if (peopleInfoState < 10)
-        selectQuery.insert(selectQuery.size()-4, "0"+to_string(peopleInfoState));
-    else
-        selectQuery.insert(selectQuery.size()-4, to_string(peopleInfoState));
+    string queryCmd;
+    queryCmd = "select * from peoplelist where Id like '";
+    int n=peopleInfoState, tmp=10000;
+    for(int i=0;i<5;i++){
+        queryCmd+=to_string(n/tmp);
+        n%=tmp;
+        tmp/=10;
+    }
+    queryCmd+="-%';";
 
-    //qDebug()<<QString::fromStdString(selectQuery);
-    query.exec(selectQuery.c_str());
+    query.exec(queryCmd.c_str());
 
+    floorPeople.clear();
     floorPeople.resize(28);
     while (query.next()) {
         int at, to, num;
 
-//        at = query.value(1).toInt();
-//        to = query.value(2).toInt();
-//        num = query.value(3).toInt();
+        at = query.value(1).toInt();
+        to = query.value(2).toInt();
+        num = query.value(3).toInt();
 //        qDebug()<<at<<to<<num;
 
-        floorPeople.at(query.value(1).toInt()).to = query.value(2).toInt();
-        floorPeople.at(query.value(1).toInt()).num = query.value(3).toInt();
+        floorPeople.at(at).to = to;
+        floorPeople.at(at).num = num;
     }
+
 }
 
 void Building::run(int floorNum, int b)
