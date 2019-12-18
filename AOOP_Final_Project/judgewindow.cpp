@@ -40,25 +40,12 @@ string JudgeWindow::getData(int floor,int b)
     query.exec(queryCmd.c_str());
 
     query.first();
-    //qDebug()<<floor<<"  "<<query.value(0).toInt();
     int num = query.value(0).toInt();
 
     int n = rand() % num;
     //qDebug()<<n;
-    queryCmd = "select * from problemlist where ID like \'";
-    if (1<=floor && floor<=9)
-        queryCmd += "0" + to_string(floor);
-    else {
-        queryCmd += to_string(floor);
-    }
-    queryCmd += "-";
-    int tmp = 10000;
-    for (int i=0; i<5; i++) {
-        queryCmd += to_string(n/tmp);
-        n %= tmp;
-        tmp /= 10;
-    }
-    queryCmd += "\';";
+    queryCmd = "SELECT * FROM problemlist WHERE ID REGEXP ";
+    queryCmd += "\'^0?" + to_string(floor) + "-0+" + to_string(n) + "$\';";
     query.exec(queryCmd.c_str());
     //qDebug()<<floor<<"  "<<QString::fromStdString(queryCmd);
 

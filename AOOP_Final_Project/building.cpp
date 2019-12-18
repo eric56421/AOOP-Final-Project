@@ -103,16 +103,10 @@ void Building::setupPeopleInfo(int peopleInfoState)
     QSqlQuery query;
 
     string queryCmd;
-    queryCmd = "select * from peoplelist where Id like '";
-    int n=peopleInfoState, tmp=10000;
-    for(int i=0;i<5;i++){
-        queryCmd+=to_string(n/tmp);
-        n%=tmp;
-        tmp/=10;
-    }
-    queryCmd+="-%';";
-
+    queryCmd = "SELECT * FROM peoplelist WHERE ID REGEXP ";
+    queryCmd += "\'^0+" + to_string(peopleInfoState) + "-\';";
     query.exec(queryCmd.c_str());
+    //qDebug()<<"Success"<<QString::fromStdString(queryCmd);
 
     floorPeople.clear();
     floorPeople.resize(28);
