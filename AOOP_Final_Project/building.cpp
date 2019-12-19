@@ -44,8 +44,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    //database.setPassword("nctuece");
-    database.setPassword("123456");
+    database.setPassword("nctuece");
+    //database.setPassword("123456");
 
     bool ok = database.open();
     if (ok) {
@@ -127,7 +127,8 @@ void Building::setupPeopleInfo(int peopleInfoState)
 void Building::run(int floorNum, int b)
 {
     data.testdata = judge.getData(floorNum, b);
-    data.submit = floor[floorNum]->p->solve(data.testdata);
+    if(data.testdata!="GINENUP")
+        data.submit = floor[floorNum]->p->solve(data.testdata);
     data.correct = judge.submitData(data.submit);
     data.spendtime = judge.getSpendTime();
     data.nowfloor = judge.getFloor();
@@ -137,6 +138,8 @@ void Building::run(int floorNum, int b)
 
 void Building::startSimulation()
 {
+    for(int i=0;i<27;i++)
+        judge.giveout[i].setDisabled(true);
     judge.reset();
     //judge.setupPeopleInfo(floorPeople);
     judge.showPeopleInfo();
@@ -157,6 +160,8 @@ void Building::update()
     if(nowstate.num==0&&nowstate.inorout=='E'&&nowstate.floor==0){
         timer->stop();
         judge.scheduleEnd();
+        for(int i=0;i<27;i++)
+            judge.giveout[i].setDisabled(true);
     }else{
         if(nowstate.inorout=='I'){
             floorPeople.at(nowstate.floor).num-=nowstate.num;

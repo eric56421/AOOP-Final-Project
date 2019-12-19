@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <QtDebug>
+#include <fstream>
 
 #include "people.h"
 #include "runinformation.h"
@@ -19,6 +20,7 @@ class Scheduler
     private:
         vector<RunInformation> runschedular;
         int index;
+        ofstream out;
 };
 
 #endif // SCHEDULER_H

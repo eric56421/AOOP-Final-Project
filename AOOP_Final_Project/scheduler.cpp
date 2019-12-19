@@ -42,4 +42,14 @@ void Scheduler::solve(vector<People> in)
     runschedular.push_back(tmp);
     for(int i=0;i<runschedular.size();i++)
         qDebug()<<runschedular.at(i).floor<<runschedular.at(i).inorout<<runschedular.at(i).num;
+    out.open("Schedule.txt");
+    if(!out){
+        qDebug()<<"open file failed"<<endl;
+    }else{
+        qDebug()<<"open file successful"<<endl;
+    }
+    for(int i=0;i<runschedular.size()-1;i++)
+        out<<runschedular.at(i).floor<<","<<runschedular.at(i).inorout<<","<<runschedular.at(i).num<<endl;
+
+    out.close();
 }

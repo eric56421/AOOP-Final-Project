@@ -19,6 +19,7 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
         for(int j=0;j<4;j++){
             ui->InformationGridLayOut->addWidget(&showline[i][j],i,j);
         }
+        ui->InformationGridLayOut->addWidget(&giveout[i],i,5);
     }
 //    arrival.resize(28);
 //    for(int i=0;i<28;i++)
