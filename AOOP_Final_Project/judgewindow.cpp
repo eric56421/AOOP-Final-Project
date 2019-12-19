@@ -38,9 +38,9 @@ JudgeWindow::~JudgeWindow()
 
 string JudgeWindow::getData(int floor,int b,int &datatimes)
 {
-    datatimes = floordatatimes[floor];
     if(giveout[floor-1].isChecked())
         return "GIVENUP";
+    datatimes = floordatatimes[floor];
     //從mysql取出資料
     QSqlQuery query;
     string queryCmd;
@@ -63,14 +63,14 @@ string JudgeWindow::getData(int floor,int b,int &datatimes)
     query.next();
     string question = query.value(2).toString().toStdString();
     this->ans = query.value(3).toString().toStdString();
-    qDebug()<<QString::fromStdString(question)<<endl;
-    qDebug()<<QString::fromStdString(this->ans)<<endl;
+    //qDebug()<<QString::fromStdString(question)<<endl;
+    //qDebug()<<QString::fromStdString(this->ans)<<endl;
 
     if(b==0)
         peopleinelevator--;
     else if(b==1)
         peopleinelevator++;
-    qDebug()<<b<<floor<<this->floor;
+    //qDebug()<<b<<floor<<this->floor;
     distance+=abs(this->floor-floor);
     this->floor = floor;
     this->timer.restart();
@@ -80,8 +80,8 @@ string JudgeWindow::getData(int floor,int b,int &datatimes)
 bool JudgeWindow::submitData(string ans)
 {
     runtime=this->timer.nsecsElapsed();
-    qDebug()<<QString::fromStdString(ans)<<endl;
-    qDebug()<<QString::fromStdString(this->ans)<<endl;
+    //qDebug()<<QString::fromStdString(ans)<<endl;
+    //qDebug()<<QString::fromStdString(this->ans)<<endl;
     showPeopleInfo();
     if(ans == this->ans){
         this->costtime[floor] += runtime/floordatatimes[this->floor];

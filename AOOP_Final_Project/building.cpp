@@ -128,9 +128,13 @@ void Building::run(int floorNum, int b)
 {
     int times;
     data.testdata = judge.getData(floorNum, b,times);
-    if(data.testdata!="GINENUP"){
-        for(int i=0;i<times;i++)
+    if(data.testdata!="GIVENUP"){
+        for(int i=0;i<times;i++){
             data.submit = floor[floorNum]->p->solve(data.testdata);
+        }
+        qDebug()<<"floor : "<<floorNum;
+    }else {
+        data.submit="";
     }
     data.correct = judge.submitData(data.submit);
     data.spendtime = judge.getSpendTime();
