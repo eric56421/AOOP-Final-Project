@@ -21,6 +21,11 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
         }
         ui->InformationGridLayOut->addWidget(&giveout[i],i,5);
     }
+    for(int i=0;i<28;i++){
+        floordatatimes[i] = 10;
+        floornextdata[i]= 0;
+        score[i]=0;
+    }
 //    arrival.resize(28);
 //    for(int i=0;i<28;i++)
 //        arrival.at(i)=0;
@@ -31,11 +36,15 @@ JudgeWindow::~JudgeWindow()
     delete ui;
 }
 
-string JudgeWindow::getData(int floor,int b)
+string JudgeWindow::getData(int floor,int b,int &datatimes)
 {
+    datatimes = floordatatimes[floor];
+    if(giveout[floor-1].isChecked())
+        return "GIVENUP";
     //從mysql取出資料
     QSqlQuery query;
     string queryCmd;
+
 
     queryCmd = "select count(Floor) from problemlist where Floor =";
     queryCmd += to_string(floor) + ";";
@@ -44,7 +53,7 @@ string JudgeWindow::getData(int floor,int b)
     query.first();
     int num = query.value(0).toInt();
 
-    int n = rand() % num;
+    int n = floornextdata[floor]%num;
     //qDebug()<<n;
     queryCmd = "SELECT * FROM problemlist WHERE ID REGEXP ";
     queryCmd += "\'^0?" + to_string(floor) + "-0+" + to_string(n) + "$\';";
@@ -70,12 +79,16 @@ string JudgeWindow::getData(int floor,int b)
 
 bool JudgeWindow::submitData(string ans)
 {
-    this->costtime[floor] += this->timer.nsecsElapsed();
+    runtime=this->timer.nsecsElapsed();
     qDebug()<<QString::fromStdString(ans)<<endl;
     qDebug()<<QString::fromStdString(this->ans)<<endl;
     showPeopleInfo();
-    if(ans == this->ans)
+    if(ans == this->ans){
+        this->costtime[floor] += runtime/floordatatimes[this->floor];
         correctansnum[floor]++;
+        score[floor]+=(10000000000+pow(2,floornextdata[floor]));
+    }
+    floornextdata[floor]++;
     questionnum[floor]++;
 
     return ans == this->ans;
@@ -104,6 +117,11 @@ void JudgeWindow::reset()
     }
     distance = 0;
     floor = 1;
+    for(int i=0;i<28;i++){
+        floordatatimes[i] = 10;
+        floornextdata[i]= 0;
+        score[i]=0;
+    }
 //    arrival.resize(28);
 //    for(int i=0;i<28;i++)
 //        arrival.at(i)=0;
@@ -122,5 +140,7 @@ void JudgeWindow::showPeopleInfo()
         //showline[i][0].setText(QString::number(floorPeople.at(i+1).num));
         //showline[i][1].setText(QString::number(arrival.at(i+1)));
         showline[i][2].setText(QString::number(costtime[i+1]));
+        showline[i][3].setText(QString::number(score[i+1]));
+       // qDebug()<<"score : "<<score[i+1];
     }
 }

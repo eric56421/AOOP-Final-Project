@@ -126,9 +126,12 @@ void Building::setupPeopleInfo(int peopleInfoState)
 
 void Building::run(int floorNum, int b)
 {
-    data.testdata = judge.getData(floorNum, b);
-    if(data.testdata!="GINENUP")
-        data.submit = floor[floorNum]->p->solve(data.testdata);
+    int times;
+    data.testdata = judge.getData(floorNum, b,times);
+    if(data.testdata!="GINENUP"){
+        for(int i=0;i<times;i++)
+            data.submit = floor[floorNum]->p->solve(data.testdata);
+    }
     data.correct = judge.submitData(data.submit);
     data.spendtime = judge.getSpendTime();
     data.nowfloor = judge.getFloor();
@@ -161,7 +164,7 @@ void Building::update()
         timer->stop();
         judge.scheduleEnd();
         for(int i=0;i<27;i++)
-            judge.giveout[i].setDisabled(true);
+            judge.giveout[i].setEnabled(true);
     }else{
         if(nowstate.inorout=='I'){
             floorPeople.at(nowstate.floor).num-=nowstate.num;
