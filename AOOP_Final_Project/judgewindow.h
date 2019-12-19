@@ -11,12 +11,14 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QLineEdit>
+#include <QCheckBox>
 
 #include <string>
 #include <fstream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <math.h>
 
 #include "people.h"
 
@@ -34,12 +36,13 @@ class JudgeWindow : public QWidget
         explicit JudgeWindow(QWidget *parent = nullptr);
         ~JudgeWindow();
         QLineEdit showline[27][4];
+        QCheckBox giveout[27];
 
     private:
         Ui::JudgeWindow *ui;
 
     public:
-        string getData(int floor,int b);//input 0-26  --> 1-27
+        string getData(int floor,int b,int &datatimes);//input 0-26  --> 1-27
         void setSeed(int seed = time(NULL)){srand(seed); peopleInfoState = rand()%300+1;}
         bool submitData(string ans);
         qint64 getSpendTime(){return costtime[floor];}
@@ -51,6 +54,10 @@ class JudgeWindow : public QWidget
         void reset();
         //void setupPeopleInfo(const vector<People> &);
         void showPeopleInfo();
+
+    private slots:
+        void on_ExportButton_clicked();
+
     private:
         string ans;
         ofstream out;
@@ -62,8 +69,14 @@ class JudgeWindow : public QWidget
         int floor;
         int peopleInfoState;
         int peopleinelevator;
+        int floordatatimes[28];
+        int runtime;
+        int floornextdata[28];
+        long long score[28];
         //vector<People> floorPeople;
         //vector<int> arrival;
+
+        void uploadToTAMySQL();
 };
 
 #endif // JUDGEWINDOW_H

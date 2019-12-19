@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1076</width>
-    <height>721</height>
+    <width>1386</width>
+    <height>731</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +23,111 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="InformationGridLayOut"/>
+  </widget>
+  <widget class="QLabel" name="WaitLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>100</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wait To Leave</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ArrivalLabel">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>10</y>
+     <width>100</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Arrival People</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="TotalCoastLabel">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>10</y>
+     <width>100</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TotalCost</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>10</y>
+     <width>100</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>WinOrLost</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="StudId1LineEdit">
+   <property name="geometry">
+    <rect>
+     <x>1090</x>
+     <y>80</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="StudName1LineEdit">
+   <property name="geometry">
+    <rect>
+     <x>1240</x>
+     <y>80</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="StudId2LineEdit">
+   <property name="geometry">
+    <rect>
+     <x>1090</x>
+     <y>120</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="StudName2LineEdit">
+   <property name="geometry">
+    <rect>
+     <x>1240</x>
+     <y>120</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ExportButton">
+   <property name="geometry">
+    <rect>
+     <x>1180</x>
+     <y>650</y>
+     <width>121</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Export to database</string>
+   </property>
   </widget>
  </widget>
  <resources/>
