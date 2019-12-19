@@ -54,6 +54,10 @@ class JudgeWindow : public QWidget
         void reset();
         //void setupPeopleInfo(const vector<People> &);
         void showPeopleInfo();
+
+    private slots:
+        void on_ExportButton_clicked();
+
     private:
         string ans;
         ofstream out;
@@ -71,6 +75,8 @@ class JudgeWindow : public QWidget
         long long score[28];
         //vector<People> floorPeople;
         //vector<int> arrival;
+
+        void uploadToTAMySQL();
 };
 
 #endif // JUDGEWINDOW_H

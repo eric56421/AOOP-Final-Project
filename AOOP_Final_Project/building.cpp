@@ -147,6 +147,8 @@ void Building::startSimulation()
 {
     for(int i=0;i<27;i++)
         judge.giveout[i].setDisabled(true);
+    for (int i=2; i<27; i++)
+        judge.giveout[i].setCheckState(Qt::Checked);
     judge.reset();
     //judge.setupPeopleInfo(floorPeople);
     judge.showPeopleInfo();
