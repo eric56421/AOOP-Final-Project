@@ -44,8 +44,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    database.setPassword("nctuece");
-    //database.setPassword("123456");
+    //database.setPassword("nctuece");
+    database.setPassword("123456");
 
     bool ok = database.open();
     if (ok) {
