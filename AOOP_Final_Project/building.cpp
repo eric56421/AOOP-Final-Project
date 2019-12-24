@@ -26,6 +26,13 @@ Building::Building()  // 30 is the # of states in data.csv
 //    floor[18] = new Floor(new P18);
 //    floor[19] = new Floor(new P19);
 //    floor[20] = new Floor(new P20);
+//    floor[21] = new Floor(new P21);
+//    floor[22] = new Floor(new P22);
+//    floor[23] = new Floor(new P23);
+//    floor[24] = new Floor(new P24);
+    floor[25] = new Floor(new P25);//TheEasyCity2
+//    floor[26] = new Floor(new P26);
+//    floor[27] = new Floor(new P27);
 
     timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
