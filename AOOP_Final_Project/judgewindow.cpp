@@ -169,23 +169,6 @@ void JudgeWindow::uploadToTAMySQL()
 
     // Upload
     QSqlQuery query;
-//    string id1 = "123", id2="456", name1="ji", name2="jiji";
-//    string studInfo = "'"+id1+"','"\
-//                        +name1+"','"\
-//                        +id2+"','"\
-//                        +name2+"', ";
-
-//    string queryCmd = "INSERT INTO floorscore (stud_id1, stud_name1, stud_id2, stud_name2, floor, timespent, pass, totalques, totalscore) VALUES (";
-
-//    int a=2222, b=3333, c=4444, d=5555;
-//    query.exec("USE aoopstudentuse;");
-//    for (int i=1; i<=2; i++) {
-//        string floorInfo = to_string(i)+", "+to_string(a)+", "+to_string(b)\
-//                            +", "+to_string(c)+", "+to_string(d)+");";
-//        qDebug()<<QString::fromStdString(queryCmd+studInfo+floorInfo);
-//        query.exec((queryCmd+studInfo+floorInfo).c_str());
-//    }
-
     string studInfo = "'"+ui->StudId1LineEdit->text().toStdString()+"','"\
                         +ui->StudName1LineEdit->text().toStdString()+"','"\
                         +ui->StudId2LineEdit->text().toStdString()+"','"\
