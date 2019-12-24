@@ -5,13 +5,16 @@ using namespace std;
 
 void FindFactorial::set()
 {
-    ifstream in;
-    in.open("numoffact.txt");
-    int num=0,n;
-    while(in){
-        in>>n;
-        num+=n;
-        factoriallist.push_back(num);
+    if(!factoriallist.empty()){
+        return;
+    }else{
+        ifstream in;
+        in.open("push.txt");
+        int num=0,n;
+        while(in){
+            in>>n;
+            factoriallist.push_back(n);
+        }
+        in.close();
     }
-    in.close();
 }

@@ -7,24 +7,20 @@ MarioOjisan::MarioOjisan()
 
 string MarioOjisan::solve(string s)
 {
-  /*  ans.clear();
-    in=stringToVectorInt(s);
-    index=0,c=1;
-    while(index<in.size()){
-        numofcoin = in.at(index);
-        n=in.at(index+numofcoin)-1;
-        for(int i=numofcoin-1;i>0;i--){
-            if(in.at(index+numofcoin)<n){
-                n-=in.at(index+i);
-                c++;
-            }
+    stringstream ss;
+    ss<<s;
+    ss>>n;
+    int a[n];
+    for(i=0;i<n;i++)
+        ss>>a[i];
+    money = a[0];
+    coin = 2;
+    for(i=1;i<n-1;i++)
+        if(money<a[i]&&money+a[i]<a[i+1]){
+            money+=a[i];
+            coin++;
         }
-        ans.push_back(c);
-        index+=numofcoin+1;
-    }*/
-
-
-    return vectorIntToString(ans);
+    return to_string(coin);
 }
 
 //dp 去解

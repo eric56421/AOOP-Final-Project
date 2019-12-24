@@ -7,21 +7,21 @@ ShyGame::ShyGame()
 
 string ShyGame::solve(string s)
 {
-    in = stringToVectorInt(s);
-    vector<int> out;
-    n = in.at(0);
-    for(int i=1;i<in.size();i++){
-
-        for(int j=0;j<n;j++)
-            people.push_back(j+1);
-
-        int now=((in.at(i)-1)%n);
+    stringstream ss,ans;
+    ss<<s;
+    ss>>n;
+    while(ss>>num){
+        people.resize(n);
+        for(int i=0;i<n;i++)
+            people[i]=i+1;
+        now = (num-1)%n;
         for(int j=0;j<n-1;j++){
             people.erase(people.begin()+now);
-            now=((now+in.at(i)-1)%(n-1-j));
+            now = (now+num-1)%(n-j-1);
         }
-        out.push_back(people.at(0));
-        people.clear();
+        ans<<people[0]<<" ";
     }
-    return vectorIntToString(out);
+    s=ans.str();
+    s.erase(s.end()-1);
+    return s;
 }
