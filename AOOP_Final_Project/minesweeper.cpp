@@ -2,14 +2,7 @@
 
 Minesweeper::Minesweeper()
 {
-    dir[0][0]=0;dir[0][1]=-1;
-    dir[1][0]=-1;dir[1][1]=-1;
-    dir[2][0]=-1;dir[2][1]=0;
-    dir[3][0]=-1;dir[3][1]=1;
-    dir[4][0]=0;dir[4][1]=1;
-    dir[5][0]=1;dir[5][1]=1;
-    dir[6][0]=1;dir[6][1]=0;
-    dir[7][0]=1;dir[7][1]=-1;
+
 }
 
 string Minesweeper::solve(string s)

@@ -1,5 +1,6 @@
 #include "findfactorial.h"
 
+
 FindFactorial::FindFactorial()
 {
     set();

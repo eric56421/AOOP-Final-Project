@@ -10,7 +10,7 @@ using namespace std;
 class ShyGame : public MyMath
 {
     vector<int> in,people;
-    int n;
+    int n,num,now;
     public:
         ShyGame();
         virtual string solve(string s) override;

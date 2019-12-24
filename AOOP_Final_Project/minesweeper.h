@@ -14,7 +14,7 @@ class Minesweeper : public MyOther
         int x;
         int y;
     };
-    int dir[8][2];
+    int dir[8][2]={{0,-1},{-1,-1},{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1}};
     int row,col;
     int c=0,gox,goy;
     string tmp;

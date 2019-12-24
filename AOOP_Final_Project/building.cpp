@@ -44,8 +44,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    //database.setPassword("nctuece");
-    database.setPassword("123456");
+    //database.setPassword("nctuece");//助教
+    database.setPassword("123456");//自己
 
     bool ok = database.open();
     if (ok) {
@@ -132,7 +132,6 @@ void Building::run(int floorNum, int b)
         for(int i=0;i<times;i++){
             data.submit = floor[floorNum]->p->solve(data.testdata);
         }
-        qDebug()<<"floor : "<<floorNum;
     }else {
         data.submit="";
     }
@@ -147,13 +146,11 @@ void Building::startSimulation()
 {
     for(int i=0;i<27;i++)
         judge.giveout[i].setDisabled(true);
-    for (int i=2; i<27; i++)
+    for (int i=11; i<27; i++)
         judge.giveout[i].setCheckState(Qt::Checked);
     judge.reset();
-    //judge.setupPeopleInfo(floorPeople);
     judge.showPeopleInfo();
     for(int i=0; i<27; i++) {
-        //qDebug()<<i<<" "<<floorPeople.at(i).num;
         judge.showline[i][0].setText(QString::number(floorPeople.at(i+1).num));
         judge.showline[i][1].setText(QString::number(arrival[i+1]));
     }
@@ -166,6 +163,7 @@ void Building::startSimulation()
 void Building::update()
 {
     RunInformation nowstate=scheduler.getSchedular();
+    qDebug()<<nowstate.floor<<nowstate.num<<nowstate.inorout;
     if(nowstate.num==0&&nowstate.inorout=='E'&&nowstate.floor==0){
         timer->stop();
         judge.scheduleEnd();
@@ -179,11 +177,9 @@ void Building::update()
         }
         judge.showline[nowstate.floor-1][0].setText(QString::number(floorPeople.at(nowstate.floor).num));
         judge.showline[nowstate.floor-1][1].setText(QString::number(arrival[nowstate.floor]));
-        if(nowstate.floor<12){//到時砍掉題目沒寫完
-            for(int i=0;i<nowstate.num;i++){
-                this->run(nowstate.floor,nowstate.inorout=='I'?1:0);
-                emit this->updateGUI();
-            }
+        for(int i=0;i<nowstate.num;i++){
+            this->run(nowstate.floor,nowstate.inorout=='I'?1:0);
+            emit this->updateGUI();
         }
         timer->start(100);
     }

@@ -7,8 +7,7 @@ using namespace std;
 
 class MarioOjisan : public MyMath
 {
-    vector<int> in,ans;
-    int numofcoin,n,c,index;
+    int n,money,coin,i;
     public:
         MarioOjisan();
         virtual string solve(string s) override;
