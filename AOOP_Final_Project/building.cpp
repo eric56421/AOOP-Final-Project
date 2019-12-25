@@ -21,8 +21,8 @@ Building::Building()  // 30 is the # of states in data.csv
 //    floor[13] = new Floor(new P13);
     floor[14] = new Floor(new P14);//Subtract1
     floor[15] = new Floor(new P15);//FindThePeriodOfString
-//    floor[16] = new Floor(new P16);
-//    floor[17] = new Floor(new P17);
+    floor[16] = new Floor(new P16);//LargeFactorial
+    floor[17] = new Floor(new P17);//SumOfLargeHexadecimalIntegers
 //    floor[18] = new Floor(new P18);
 //    floor[19] = new Floor(new P19);
 //    floor[20] = new Floor(new P20);
@@ -45,6 +45,7 @@ Building::Building()  // 30 is the # of states in data.csv
     for (int i=0; i<27; i++)
         judge.giveout[i].setCheckState(Qt::Checked);
     judge.giveout[8].setCheckState(Qt::Unchecked);
+    judge.giveout[12].setCheckState(Qt::Checked);
     judge.giveout[24].setCheckState(Qt::Unchecked);
     judge.giveout[21].setCheckState(Qt::Unchecked);
 }
@@ -122,8 +123,8 @@ void Building::setupPeopleInfo(int peopleInfoState)
     query.exec(queryCmd.c_str());
     //qDebug()<<"Success"<<QString::fromStdString(queryCmd);
 
-    qDebug()<<query.lastError().text();
-    qDebug()<<"in setupPeople";
+    //qDebug()<<query.lastError().text();
+    //qDebug()<<"in setupPeople";
     floorPeople.clear();
     floorPeople.resize(28);
     while (query.next()) {
@@ -143,7 +144,7 @@ void Building::setupPeopleInfo(int peopleInfoState)
 void Building::run(int floorNum, int b)
 {
     int times;
-    qDebug()<<floorNum;
+    //qDebug()<<floorNum;
     data.testdata = judge.getData(floorNum, b,times);
     if(data.testdata!="GIVENUP"){
         qDebug()<<"In problem: "<<QString::number(floorNum);

@@ -46,11 +46,11 @@ typedef Subtract1 P14;
 #include "findtheperiodofstring.h"
 typedef FindThePeriodOfString P15;
 
-//#include ""
-//typedef P16;
+#include "largefactorial.h"
+typedef LargeFactorial P16;
 
-//#include ""
-//typedef P17;
+#include "sumoflargehexadecimalintegers.h"
+typedef SumOfLargeHexadecimalIntegers P17;
 
 //#include ""
 //typedef P18;
