@@ -51,8 +51,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    //database.setPassword("nctuece");//助教
-    database.setPassword("123456");//自己
+    //database.setPassword("nctuece");  //TA
+    database.setPassword("123456");  //us
 
     bool ok = database.open();
     if (ok) {
@@ -108,13 +108,16 @@ void Building::setupProblemTB()
 void Building::setupPeopleInfo(int peopleInfoState)
 {
     QSqlQuery query;
-
     string queryCmd;
+
+    query.exec("USE FINAL;");
     queryCmd = "SELECT * FROM peoplelist WHERE ID REGEXP ";
     queryCmd += "\'^0+" + to_string(peopleInfoState) + "-\';";
     query.exec(queryCmd.c_str());
     //qDebug()<<"Success"<<QString::fromStdString(queryCmd);
 
+    qDebug()<<query.lastError().text();
+    qDebug()<<"in setupPeople";
     floorPeople.clear();
     floorPeople.resize(28);
     while (query.next()) {
