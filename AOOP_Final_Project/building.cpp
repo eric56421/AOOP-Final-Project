@@ -19,8 +19,8 @@ Building::Building()  // 30 is the # of states in data.csv
     floor[11] = new Floor(new P11);//DistanceBetweenPrime
     floor[12] = new Floor(new P12);//MarioOjisan
 //    floor[13] = new Floor(new P13);
-//    floor[14] = new Floor(new P14);
-//    floor[15] = new Floor(new P15);
+    floor[14] = new Floor(new P14);//Subtract1
+    floor[15] = new Floor(new P15);//FindThePeriodOfString
 //    floor[16] = new Floor(new P16);
 //    floor[17] = new Floor(new P17);
 //    floor[18] = new Floor(new P18);
@@ -127,6 +127,7 @@ void Building::setupPeopleInfo(int peopleInfoState)
 void Building::run(int floorNum, int b)
 {
     int times;
+    qDebug()<<floorNum;
     data.testdata = judge.getData(floorNum, b,times);
     if(data.testdata!="GIVENUP"){
         for(int i=0;i<times;i++){
@@ -146,7 +147,7 @@ void Building::startSimulation()
 {
     for(int i=0;i<27;i++)
         judge.giveout[i].setDisabled(true);
-    for (int i=11; i<27; i++)
+    for (int i=12; i<27; i++)
         judge.giveout[i].setCheckState(Qt::Checked);
     judge.reset();
     judge.showPeopleInfo();
