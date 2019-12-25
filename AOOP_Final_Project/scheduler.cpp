@@ -18,6 +18,7 @@ void Scheduler::reset()
 void Scheduler::solve(vector<People> in)
 {
     runschedular.clear();
+    qDebug()<<"hi";
     for(int i=0;i<in.size();i++)
         qDebug()<<in.at(i).num<<in.at(i).to;
     RunInformation tmp;

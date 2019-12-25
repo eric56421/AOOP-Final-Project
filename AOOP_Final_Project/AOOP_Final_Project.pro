@@ -33,6 +33,7 @@ SOURCES += \
     mainwindow.cpp \
     marioojisan.cpp \
     minesweeper.cpp \
+    mydatabase.cpp \
     mymath.cpp \
     myother.cpp \
     mystring.cpp \
@@ -45,7 +46,8 @@ SOURCES += \
     shortestandlongestpair.cpp \
     shortestsummationdistance.cpp \
     shygame.cpp \
-    subtract1.cpp
+    subtract1.cpp \
+    theeasycity2.cpp
 
 HEADERS += \
     add1.h \
@@ -64,6 +66,7 @@ HEADERS += \
     mainwindow.h \
     marioojisan.h \
     minesweeper.h \
+    mydatabase.h \
     mymath.h \
     myother.h \
     mystring.h \
@@ -76,7 +79,8 @@ HEADERS += \
     shortestandlongestpair.h \
     shortestsummationdistance.h \
     shygame.h \
-    subtract1.h
+    subtract1.h \
+    theeasycity2.h
 
 FORMS += \
     judgewindow.ui \

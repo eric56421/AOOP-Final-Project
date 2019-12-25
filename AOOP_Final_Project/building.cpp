@@ -26,6 +26,13 @@ Building::Building()  // 30 is the # of states in data.csv
 //    floor[18] = new Floor(new P18);
 //    floor[19] = new Floor(new P19);
 //    floor[20] = new Floor(new P20);
+//    floor[21] = new Floor(new P21);
+//    floor[22] = new Floor(new P22);
+//    floor[23] = new Floor(new P23);
+//    floor[24] = new Floor(new P24);
+    floor[25] = new Floor(new P25);//TheEasyCity2
+//    floor[26] = new Floor(new P26);
+//    floor[27] = new Floor(new P27);
 
     timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
@@ -44,8 +51,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    //database.setPassword("nctuece");//助教
-    database.setPassword("123456");//自己
+    //database.setPassword("nctuece");  //TA
+    database.setPassword("123456");  //us
 
     bool ok = database.open();
     if (ok) {
@@ -101,13 +108,16 @@ void Building::setupProblemTB()
 void Building::setupPeopleInfo(int peopleInfoState)
 {
     QSqlQuery query;
-
     string queryCmd;
+
+    query.exec("USE FINAL;");
     queryCmd = "SELECT * FROM peoplelist WHERE ID REGEXP ";
     queryCmd += "\'^0+" + to_string(peopleInfoState) + "-\';";
     query.exec(queryCmd.c_str());
     //qDebug()<<"Success"<<QString::fromStdString(queryCmd);
 
+    qDebug()<<query.lastError().text();
+    qDebug()<<"in setupPeople";
     floorPeople.clear();
     floorPeople.resize(28);
     while (query.next()) {

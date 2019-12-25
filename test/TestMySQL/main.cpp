@@ -17,17 +17,17 @@ int main()
     connectMySQL();
     setupCityDB();
 
-    string io, ans, queryCmd;
+    string s, ans, theans, queryCmd;
     stringstream token;
 
     int n, m;
     double la, ha, lo, ho;
     string LorS, chs, che;
 
-    getline(cin, io);
-    getline(cin, ans);
+    getline(cin, s);
+    getline(cin, theans);
     cout<<endl<<"Command"<<endl;
-    token<<io;
+    token<<s;
     token>>n>>LorS>>chs>>che>>la>>ha>>lo>>ho>>m;
 
     token.str("");
@@ -73,14 +73,14 @@ int main()
     else
         token<<' '<<query.value(0).toString().toStdString();
 
-    //io.clear();
-    io = token.str();
+    //s.clear();
+    ans = token.str();
     cout<<endl<<endl;
-    cout<<io<<endl;
     cout<<ans<<endl;
-    cout<<"Correct: "<<(io==ans)<<endl<<endl;
+    cout<<theans<<endl;
+    cout<<"Correct: "<<(ans==theans)<<endl<<endl;
 
-    return 0;
+    return ans;
 }
 
 void connectMySQL()
@@ -96,7 +96,7 @@ void connectMySQL()
 
     bool ok = database.open();
     if (ok) {
-        cout<<"Successful connection.";
+        cout<<"Successful connectsn.";
     } else {
         cout<<"Error: Cannot connect!!!";
     }
