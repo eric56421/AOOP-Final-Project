@@ -47,6 +47,7 @@ SOURCES += \
     shortestsummationdistance.cpp \
     shygame.cpp \
     subtract1.cpp \
+    theeasycity1.cpp \
     theeasycity2.cpp
 
 HEADERS += \
@@ -80,6 +81,7 @@ HEADERS += \
     shortestsummationdistance.h \
     shygame.h \
     subtract1.h \
+    theeasycity1.h \
     theeasycity2.h
 
 FORMS += \

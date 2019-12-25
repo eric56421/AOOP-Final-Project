@@ -27,7 +27,7 @@ Building::Building()  // 30 is the # of states in data.csv
 //    floor[19] = new Floor(new P19);
 //    floor[20] = new Floor(new P20);
 //    floor[21] = new Floor(new P21);
-//    floor[22] = new Floor(new P22);
+    floor[22] = new Floor(new P22);//TheEasyCity1
 //    floor[23] = new Floor(new P23);
 //    floor[24] = new Floor(new P24);
     floor[25] = new Floor(new P25);//TheEasyCity2
@@ -42,8 +42,11 @@ Building::Building()  // 30 is the # of states in data.csv
     int n=judge.getConditionNum();
     setupPeopleInfo(n);
 
-    for (int i=11; i<27; i++)
+    for (int i=0; i<27; i++)
         judge.giveout[i].setCheckState(Qt::Checked);
+    judge.giveout[8].setCheckState(Qt::Unchecked);
+    judge.giveout[24].setCheckState(Qt::Unchecked);
+    judge.giveout[21].setCheckState(Qt::Unchecked);
 }
 
 void Building::connectMySQL()
@@ -143,6 +146,7 @@ void Building::run(int floorNum, int b)
     qDebug()<<floorNum;
     data.testdata = judge.getData(floorNum, b,times);
     if(data.testdata!="GIVENUP"){
+        qDebug()<<"In problem: "<<QString::number(floorNum);
         for(int i=0;i<times;i++){
             data.submit = floor[floorNum]->p->solve(data.testdata);
         }

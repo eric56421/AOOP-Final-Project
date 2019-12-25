@@ -28,9 +28,9 @@ void MyDatabase::connectMySQL()
 void MyDatabase::setupCityDB()
 {
     QSqlQuery query;
-    query.exec("DROP DATABASE IF EXISTS CITYDATABAS;");
-    query.exec("CREATE DATABASE CITYDATABAS;");
-    query.exec("USE CITYDATABAS;");
+    query.exec("DROP DATABASE IF EXISTS CITYDATABASE;");
+    query.exec("CREATE DATABASE CITYDATABASE;");
+    query.exec("USE CITYDATABASE;");
     query.exec("DROP TABLE IF EXISTS CITYTABLE;");
     query.exec("CREATE TABLE CITYTABLE (\
                 ID INT, COUNTRY VARCHAR(50), CITY VARCHAR(60),\

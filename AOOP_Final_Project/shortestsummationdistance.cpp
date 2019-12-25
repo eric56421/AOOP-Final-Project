@@ -34,7 +34,18 @@ string ShortestSummationDistance::solve(string s)
             }
         }
 
-        dp = new double [(1<<n)+1];
+        try
+        {
+            qDebug()<<"Asking memory~";
+            dp = new double [(1<<n)+1];
+//            if (dp == NULL) {
+//                throw 1<<n+1;
+//            }
+        }
+        catch (bad_alloc &b)
+        {
+            qDebug()<<"out of memory: "<<QString::number(n);
+        }
 
         dp[0] = 0;
         for(int S=1; S<(1<<n); S++){
@@ -54,12 +65,14 @@ string ShortestSummationDistance::solve(string s)
 
         }
 
+        delete [] dp;
+        qDebug()<<"Returning memory";
         for(int i=0;i<n;i++)
-            delete []dis[i];
-        delete []dis;
-        delete []dp;
+            delete [] dis[i];
+        delete [] dis;
 
         ans.push_back(dp[(1<<n)-1]);
+        qDebug()<<"Success leaving";
     }
 
     return vectorDoubleToString(ans);

@@ -6,6 +6,7 @@
 #include <vector>
 #include <sstream>
 #include <string>
+#include <iomanip>
 
 #include <QDebug>
 #include <QSqlQuery>
@@ -20,10 +21,9 @@ class MyDatabase : public ProblemSet
     public:
         MyDatabase();
         virtual string solve(string s) = 0;
-
-    private:
         void connectMySQL();
         void setupCityDB();
+
 };
 
 #endif // MYDATABASE_H

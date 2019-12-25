@@ -64,8 +64,8 @@ typedef FindThePeriodOfString P15;
 //#include ""
 //typedef P21;
 
-//#include ""
-//typedef P22;
+#include "theeasycity1.h"
+typedef TheEasyCity1 P22;
 
 //#include ""
 //typedef P23;

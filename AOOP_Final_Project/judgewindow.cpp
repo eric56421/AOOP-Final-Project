@@ -45,7 +45,7 @@ string JudgeWindow::getData(int floor,int b,int &datatimes)
     QSqlQuery query;
     string queryCmd;
 
-
+    query.exec("USE FINAL;");
     queryCmd = "select count(Floor) from problemlist where Floor =";
     queryCmd += to_string(floor) + ";";
     query.exec(queryCmd.c_str());
@@ -171,14 +171,14 @@ void JudgeWindow::uploadToTAMySQL()
 
     // Upload
     QSqlQuery query;
+    query.exec("USE aoopstudentuse;");
+
     string studInfo = "'"+ui->StudId1LineEdit->text().toStdString()+"','"\
                         +ui->StudName1LineEdit->text().toStdString()+"','"\
                         +ui->StudId2LineEdit->text().toStdString()+"','"\
                         +ui->StudName2LineEdit->text().toStdString()+"', ";
-
     string queryCmd = "INSERT INTO floorscore (stud_id1, stud_name1, stud_id2, stud_name2, floor, timespent, pass, totalques, totalscore) VALUES (";
 
-    query.exec("USE aoopstudentuse;");
     for (int i=1; i<=27; i++) {
         string floorInfo = to_string(i)+", "+to_string(costtime[i])+", "+to_string(correctansnum[i])\
                             +", "+to_string(questionnum[i])+", "+to_string(score[i])+");";
