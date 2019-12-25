@@ -15,11 +15,13 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
     distance = 0;
     floor = 1;
     peopleinelevator=0;
-    for(int i=0;i<27;i++){
+    for(int i=0;i<27;i++){        
         for(int j=0;j<4;j++){
             ui->InformationGridLayOut->addWidget(&showline[i][j],i,j);
         }
         ui->InformationGridLayOut->addWidget(&giveout[i],i,5);
+        floorLabel[i].setNum(i+1);
+        ui->InformationGridLayOut->addWidget(&floorLabel[i], i, 6);
     }
     for(int i=0;i<28;i++){
         floordatatimes[i] = 10;

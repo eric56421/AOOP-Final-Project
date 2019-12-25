@@ -41,6 +41,9 @@ Building::Building()  // 30 is the # of states in data.csv
     judge.setSeed(0);
     int n=judge.getConditionNum();
     setupPeopleInfo(n);
+
+    for (int i=11; i<27; i++)
+        judge.giveout[i].setCheckState(Qt::Checked);
 }
 
 void Building::connectMySQL()
@@ -156,8 +159,7 @@ void Building::startSimulation()
 {
     for(int i=0;i<27;i++)
         judge.giveout[i].setDisabled(true);
-    for (int i=11; i<27; i++)
-        judge.giveout[i].setCheckState(Qt::Checked);
+
     judge.reset();
     judge.showPeopleInfo();
     for(int i=0; i<27; i++) {

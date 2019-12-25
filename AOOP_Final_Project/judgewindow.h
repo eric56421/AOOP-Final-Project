@@ -12,6 +12,7 @@
 #include <QSqlError>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QLabel>
 
 #include <string>
 #include <fstream>
@@ -37,6 +38,7 @@ class JudgeWindow : public QWidget
         ~JudgeWindow();
         QLineEdit showline[27][4];
         QCheckBox giveout[27];
+        QLabel floorLabel[27];
 
     private:
         Ui::JudgeWindow *ui;
