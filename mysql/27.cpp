@@ -21,60 +21,67 @@ int main()
     string s, ans, theans, queryCmd;
     stringstream token;
 
-    int n, m;
-    double la, ha, lo, ho;
-    string LorS, chs, che;
+    int m, n, k;
+    string eo;                      // eo -> even/odd
 
     getline(cin, s);
     getline(cin, theans);
     cout<<endl<<"Command"<<endl;
     token<<s;
-    token>>n>>LorS>>chs>>che>>la>>ha>>lo>>ho>>m;
+    token>>eo>>m>>n>>k;
 
     token.str("");
     token.clear();
 
     QSqlQuery query;
+    query.exec("USE CITYDATABASE");
     query.exec("SET SQL_SAFE_UPDATES = 0;");
 
-    // 25-7
-    queryCmd = "SELECT substr(country, 1, 3) as country_name, count(city) as count from CITYTABLE group by country order by count(city) ";
-    if (LorS == "sma")
-        queryCmd += "asc";
-    else
-        queryCmd += "desc";
-    queryCmd += " limit " + to_string(n-1) + ", 1;";
-
-    cout<<queryCmd<<endl;
-    query.exec(queryCmd.c_str());
-    query.next();
-    token<<query.value(0).toString().toStdString()<<' '<<query.value(1).toString().toStdString();
-
-    // 25-8
-    queryCmd = "delete from citytable where (city regexp '^[^" + chs + "]|[" + che + "]$' or (lat between "\
-                + to_string(la) + " and " + to_string(ha) + " and lon between " + to_string(lo) + " and " + to_string(ho) + "));";
-
-    cout<<queryCmd<<endl;
-    query.exec(queryCmd.c_str());
-
-    // 25-9
-    queryCmd = "update citytable set lat=lon, lon=@tmp where (@tmp:=lat) is not null and Id%10=" + to_string(m) + ";";
-
-    cout<<queryCmd<<endl;
-    query.exec(queryCmd.c_str());
-
-    // 25-10
-    queryCmd = "select sqrt(pow(max(lat)-min(lat), 2)+pow(max(lon)-min(lon), 2)) from citytable;";
-
+    // Template
+    /*
+    queryCmd =
     cout<<queryCmd<<endl;
     query.exec(queryCmd.c_str());
     query.next();
     if (query.value(0).isNull())
         token<<" NULL";
     else
-        token<<fixed<<setprecision(4)<<' '<<query.value(0).toDouble();
+        token<<' '<<query.value(0).toString().toStdString();
+    */
 
-    //s.clear();
+    // 14
+    queryCmd = "update citytable set lat=lon, lon=@tmp where (@tmp:=lat) is not null and id%2 = ";
+    if (eo == "ev")
+        queryCmd += "0;";
+    else
+        queryCmd += "1;";
+    cout<<queryCmd<<endl;
+    query.exec(queryCmd.c_str());
+    
+    // 15
+    queryCmd = "update citytable set lat = lon where id%10 = " + to_string(m) + ";";
+    cout<<queryCmd<<endl;
+    query.exec(queryCmd.c_str());
+    
+    // 16
+    queryCmd = "select distinct t1.x, t1.y, t2.x, t2.y from ";
+    string tmp = "(select id, round(lat, " + to_string(n) + ") as x, round(lon, " + to_string(n) + ") as y from citytable) as ";
+    queryCmd += tmp + "t1 join " + tmp + "t2 ";
+    queryCmd += "on t1.id != t2.id where t1.x = t2.y and t1.y = t2.x and t1.x <= t1.y order by t1.x, t1.y ";
+    queryCmd += "limit " + to_string(k-1) + ", 1;";
+
+    cout<<queryCmd<<endl;
+    query.exec(queryCmd.c_str());
+    query.next();
+    if (query.value(0).isNull())
+        token<<"NULL";
+    else
+        token<<fixed<<setprecision(1)<<query.value(0).toDouble();
+    if (query.value(1).isNull())
+        token<<" NULL";
+    else
+        token<<fixed<<setprecision(1)<<' '<<query.value(1).toDouble();
+
     ans = token.str();
     cout<<endl<<endl;
     cout<<ans<<endl;
@@ -104,17 +111,17 @@ void connectMySQL()
 }
 
 void setupCityDB()
-{    
+{
     QSqlQuery query;
-    query.exec("DROP DATABASE IF EXISTS CITYDATABAS;");
-    query.exec("CREATE DATABASE CITYDATABAS;");
-    query.exec("USE CITYDATABAS;");
+    query.exec("DROP DATABASE IF EXISTS CITYDATABASE;");
+    query.exec("CREATE DATABASE CITYDATABASE;");
+    query.exec("USE CITYDATABASE;");
     query.exec("DROP TABLE IF EXISTS CITYTABLE;");
     query.exec("CREATE TABLE CITYTABLE (\
                 ID INT, COUNTRY VARCHAR(50), CITY VARCHAR(60),\
                 LAT DOUBLE, LON DOUBLE, PRIMARY KEY(ID)\
                 );");
-    query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city.csv'\ 
+    query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city.csv'\
                     INTO TABLE CITYTABLE  \
                     FIELDS TERMINATED BY ','  \
                     ENCLOSED BY '\"' \

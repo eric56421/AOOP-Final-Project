@@ -32,7 +32,7 @@ Building::Building()  // 30 is the # of states in data.csv
 //    floor[24] = new Floor(new P24);
     floor[25] = new Floor(new P25);//TheEasyCity2
     floor[26] = new Floor(new P26);//LongestAndShortestDistance
-//    floor[27] = new Floor(new P27);
+    floor[27] = new Floor(new P27);//SymmetricPairs
 
     timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));

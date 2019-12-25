@@ -54,7 +54,7 @@ string TheEasyCity2::solve(string s)
     query.exec(queryCmd.c_str());
 
     // 25-10
-    queryCmd = "select format(sqrt(pow(max(lat)-min(lat), 2)+pow(max(lon)-min(lon), 2)), 4) from citytable;";
+    queryCmd = "select sqrt(pow(max(lat)-min(lat), 2)+pow(max(lon)-min(lon), 2)) from citytable;";
 
     // qDebug()<<QString::fromStdString(queryCmd)<<endl;
     query.exec(queryCmd.c_str());
@@ -62,7 +62,7 @@ string TheEasyCity2::solve(string s)
     if (query.value(0).isNull())
         token<<" NULL";
     else
-        token<<' '<<query.value(0).toString().toStdString();
+        token<<fixed<<setprecision(4)<<' '<<query.value(0).toDouble();
 
     //s.clear();
     ans = token.str();

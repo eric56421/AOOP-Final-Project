@@ -79,8 +79,8 @@ typedef TheEasyCity2 P25;
 #include "longestandshortestdistance.h"
 typedef LongestAndShortestDistance P26;
 
-//#include ""
-//typedef P27;
+#include "symmetricpairs.h"
+typedef SymmetricPairs P27;
 
 
 #endif // PROBLEMS_H

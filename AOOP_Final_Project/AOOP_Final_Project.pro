@@ -50,6 +50,7 @@ SOURCES += \
     shortestsummationdistance.cpp \
     shygame.cpp \
     subtract1.cpp \
+    symmetricpairs.cpp \
     theeasycity1.cpp \
     sumoflargehexadecimalintegers.cpp \
     theeasycity2.cpp
@@ -88,6 +89,7 @@ HEADERS += \
     shortestsummationdistance.h \
     shygame.h \
     subtract1.h \
+    symmetricpairs.h \
     theeasycity1.h \
     sumoflargehexadecimalintegers.h \
     theeasycity2.h
