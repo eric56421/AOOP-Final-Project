@@ -23,6 +23,7 @@ SOURCES += \
     fibonaccioffibonacci.cpp \
     findfactorial.cpp \
     findstructuresoftrees.cpp \
+    findtheperiodofstring.cpp \
     floor.cpp \
     getsignature.cpp \
     judge.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     mydatabase.cpp \
     mymath.cpp \
     myother.cpp \
+    mystring.cpp \
     mytree.cpp \
     people.cpp \
     problemset.cpp \
@@ -55,6 +57,7 @@ HEADERS += \
     fibonaccioffibonacci.h \
     findfactorial.h \
     findstructuresoftrees.h \
+    findtheperiodofstring.h \
     floor.h \
     getsignature.h \
     judge.h \
@@ -66,6 +69,7 @@ HEADERS += \
     mydatabase.h \
     mymath.h \
     myother.h \
+    mystring.h \
     mytree.h \
     people.h \
     problems.h \

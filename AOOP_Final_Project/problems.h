@@ -40,11 +40,11 @@ typedef MarioOjisan P12;
 //#include ""
 //typedef P13;
 
-//#include ""
-//typedef P14;
+#include "subtract1.h"
+typedef Subtract1 P14;
 
-//#include ""
-//typedef P15;
+#include "findtheperiodofstring.h"
+typedef FindThePeriodOfString P15;
 
 //#include ""
 //typedef P16;
