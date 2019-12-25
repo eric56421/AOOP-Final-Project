@@ -28,6 +28,7 @@ SOURCES += \
     getsignature.cpp \
     judge.cpp \
     judgewindow.cpp \
+    largefactorial.cpp \
     largesroot.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -47,6 +48,7 @@ SOURCES += \
     shortestsummationdistance.cpp \
     shygame.cpp \
     subtract1.cpp \
+    sumoflargehexadecimalintegers.cpp \
     theeasycity2.cpp
 
 HEADERS += \
@@ -62,6 +64,7 @@ HEADERS += \
     getsignature.h \
     judge.h \
     judgewindow.h \
+    largefactorial.h \
     largesroot.h \
     mainwindow.h \
     marioojisan.h \
@@ -80,6 +83,7 @@ HEADERS += \
     shortestsummationdistance.h \
     shygame.h \
     subtract1.h \
+    sumoflargehexadecimalintegers.h \
     theeasycity2.h
 
 FORMS += \
