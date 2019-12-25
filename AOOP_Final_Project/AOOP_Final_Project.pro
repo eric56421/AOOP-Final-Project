@@ -30,8 +30,10 @@ SOURCES += \
     judgewindow.cpp \
     largefactorial.cpp \
     largesroot.cpp \
+    longestandshortestdistance.cpp \
     main.cpp \
     mainwindow.cpp \
+    manhattandistance.cpp \
     marioojisan.cpp \
     minesweeper.cpp \
     mydatabase.cpp \
@@ -67,7 +69,9 @@ HEADERS += \
     judgewindow.h \
     largefactorial.h \
     largesroot.h \
+    longestandshortestdistance.h \
     mainwindow.h \
+    manhattandistance.h \
     marioojisan.h \
     minesweeper.h \
     mydatabase.h \

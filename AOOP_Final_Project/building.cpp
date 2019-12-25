@@ -28,10 +28,10 @@ Building::Building()  // 30 is the # of states in data.csv
 //    floor[20] = new Floor(new P20);
 //    floor[21] = new Floor(new P21);
     floor[22] = new Floor(new P22);//TheEasyCity1
-//    floor[23] = new Floor(new P23);
+    floor[23] = new Floor(new P23);//ManhattanDistance
 //    floor[24] = new Floor(new P24);
     floor[25] = new Floor(new P25);//TheEasyCity2
-//    floor[26] = new Floor(new P26);
+    floor[26] = new Floor(new P26);//LongestAndShortestDistance
 //    floor[27] = new Floor(new P27);
 
     timer = new QTimer;

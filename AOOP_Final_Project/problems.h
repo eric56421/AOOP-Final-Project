@@ -67,8 +67,8 @@ typedef SumOfLargeHexadecimalIntegers P17;
 #include "theeasycity1.h"
 typedef TheEasyCity1 P22;
 
-//#include ""
-//typedef P23;
+#include "manhattandistance.h"
+typedef ManhattanDistance P23;
 
 //#include ""
 //typedef P24;
@@ -76,8 +76,8 @@ typedef TheEasyCity1 P22;
 #include "theeasycity2.h"
 typedef TheEasyCity2 P25;
 
-//#include ""
-//typedef P26;
+#include "longestandshortestdistance.h"
+typedef LongestAndShortestDistance P26;
 
 //#include ""
 //typedef P27;
