@@ -9,7 +9,8 @@ class LongestCommonSubstring : public MyString
 {
     public:
         LongestCommonSubstring();
-        virtual string solve(string s) override;
+        virtual string solve(string s);
+        string lcs(string X, string Y);
 };
 
 #endif // LONGESTCOMMONSUBSTRING_H

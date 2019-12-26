@@ -41,14 +41,17 @@ Building::Building()  // 30 is the # of states in data.csv
     judge.setSeed(0);
     int n=judge.getConditionNum();
     setupPeopleInfo(n);
-
-    for (int i=0; i<27; i++)
-        judge.giveout[i].setCheckState(Qt::Checked);
-    judge.giveout[8].setCheckState(Qt::Unchecked);
+    judge.giveout[8].setCheckState(Qt::Checked);
     judge.giveout[12].setCheckState(Qt::Checked);
-    judge.giveout[24].setCheckState(Qt::Unchecked);
-    judge.giveout[21].setCheckState(Qt::Unchecked);
-    judge.giveout[18].setCheckState(Qt::Unchecked);
+    judge.giveout[20].setCheckState(Qt::Checked);
+    judge.giveout[23].setCheckState(Qt::Checked);
+//    for (int i=0; i<27; i++)
+//        judge.giveout[i].setCheckState(Qt::Checked);
+//    judge.giveout[8].setCheckState(Qt::Unchecked);
+//    judge.giveout[12].setCheckState(Qt::Checked);
+//    judge.giveout[24].setCheckState(Qt::Unchecked);
+//    judge.giveout[21].setCheckState(Qt::Unchecked);
+//    judge.giveout[18].setCheckState(Qt::Unchecked);
 }
 
 void Building::connectMySQL()

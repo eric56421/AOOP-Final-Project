@@ -5,7 +5,7 @@ LongestCommonSubstring::LongestCommonSubstring()
 
 }
 
-string lcs(string X, string Y)
+string LongestCommonSubstring::lcs(string X, string Y)
 {
     int m=X.length();
     int n=Y.length(),i,j;
@@ -66,7 +66,7 @@ string lcs(string X, string Y)
 
 }
 
-string solve(string s)
+string LongestCommonSubstring::solve(string s)
 {
     stringstream ss;
      int i,pos=0,prev=0;
