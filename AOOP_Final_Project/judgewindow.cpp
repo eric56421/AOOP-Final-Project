@@ -28,6 +28,9 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
         floornextdata[i]= 0;
         score[i]=0;
     }
+    for(int i=22;i<28;i++){
+        floordatatimes[i] = 1;
+    }
 
     ui->StudId1LineEdit->setText("0710730");
     ui->StudName1LineEdit->setText("郭昱辰");
