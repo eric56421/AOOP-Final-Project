@@ -28,6 +28,11 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
         floornextdata[i]= 0;
         score[i]=0;
     }
+
+    ui->StudId1LineEdit->setText("0710730");
+    ui->StudName1LineEdit->setText("郭昱辰");
+    ui->StudId2LineEdit->setText("0710758");
+    ui->StudName2LineEdit->setText("黃宇裼");
 //    arrival.resize(28);
 //    for(int i=0;i<28;i++)
 //        arrival.at(i)=0;

@@ -16,7 +16,6 @@ string TheEasyCity2::solve(string s)
     double la, ha, lo, ho;
     string LorS, chs, che;
 
-    qDebug()<<endl<<"Command"<<endl;
     token<<s;
     token>>n>>LorS>>chs>>che>>la>>ha>>lo>>ho>>m;
 
