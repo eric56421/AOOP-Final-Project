@@ -44,7 +44,8 @@ Building::Building()  // 30 is the # of states in data.csv
 //    judge.giveout[8].setCheckState(Qt::Checked);
 //    judge.giveout[12].setCheckState(Qt::Checked);
 //    judge.giveout[20].setCheckState(Qt::Checked);
-    judge.giveout[23].setCheckState(Qt::Checked);
+    for(int i=21;i<27;i++)
+        judge.giveout[i].setCheckState(Qt::Checked);
 //    for (int i=0; i<27; i++)
 //        judge.giveout[i].setCheckState(Qt::Checked);
 //    judge.giveout[8].setCheckState(Qt::Unchecked);
@@ -62,8 +63,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    database.setPassword("nctuece");  //TA
-    //database.setPassword("123456");  //us
+    //database.setPassword("nctuece");  //TA
+    database.setPassword("123456");  //us
 
     bool ok = database.open();
     if (ok) {
