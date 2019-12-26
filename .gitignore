@@ -1,6 +1,7 @@
 # This file is used to ignore files which are generated
 # Added by Fishbone Huang
-AOOP_Final_Project/time.txt
+**/time.txt
+**/Schedule.txt
 
 # ----------------------------------------------------------------------------
 
