@@ -18,7 +18,7 @@ Building::Building()  // 30 is the # of states in data.csv
     floor[10] = new Floor(new P10);//Add1
     floor[11] = new Floor(new P11);//DistanceBetweenPrime
     floor[12] = new Floor(new P12);//MarioOjisan
-//    floor[13] = new Floor(new P13);
+    floor[13] = new Floor(new P13);//EscapeIfYouWantToSurvive
     floor[14] = new Floor(new P14);//Subtract1
     floor[15] = new Floor(new P15);//FindThePeriodOfString
     floor[16] = new Floor(new P16);//LargeFactorial

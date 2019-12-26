@@ -37,8 +37,8 @@ typedef DistanceBetweenPrime P11;
 #include "marioojisan.h"
 typedef MarioOjisan P12;
 
-//#include ""
-//typedef P13;
+#include "escapeifyouwanttosurvive.h"
+typedef EscapeIfYouWantToSurvive P13;
 
 #include "subtract1.h"
 typedef Subtract1 P14;

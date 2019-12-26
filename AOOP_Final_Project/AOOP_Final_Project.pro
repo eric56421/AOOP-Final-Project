@@ -20,6 +20,7 @@ SOURCES += \
     building.cpp \
     data.cpp \
     distancebetweenprime.cpp \
+    escapeifyouwanttosurvive.cpp \
     fibonaccioffibonacci.cpp \
     findfactorial.cpp \
     findstructuresoftrees.cpp \
@@ -64,6 +65,7 @@ HEADERS += \
     building.h \
     data.h \
     distancebetweenprime.h \
+    escapeifyouwanttosurvive.h \
     fibonaccioffibonacci.h \
     findfactorial.h \
     findstructuresoftrees.h \
