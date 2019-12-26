@@ -22,24 +22,48 @@ void Scheduler::solve(vector<People> in)
     for(int i=0;i<in.size();i++)
         qDebug()<<in.at(i).num<<in.at(i).to;
     RunInformation tmp;
-    for(int i=1;i<in.size();i++){
-        while(in.at(i).num>0){
-            tmp.floor=i;
-            tmp.inorout='I';
-            if(in.at(i).num>10)
-                tmp.num=10;
-            else
-                tmp.num=in.at(i).num;
-            runschedular.push_back(tmp);
-            tmp.floor=in.at(i).to;
-            tmp.inorout='O';
-            runschedular.push_back(tmp);
-            in.at(i).num-=tmp.num;
+
+    vector<People> ele;
+    int nowfloor=1,down=1,up=27,go=1,outnum,innum;
+
+    while(down<=up){
+        outnum=innum=0;
+        if(in.at(down).num==0)
+            down++;
+        if(in.at(up).num==0)
+            up++;
+
+        for(int i=0;i<ele.size();i++){
+            if(ele.at(i).to==nowfloor){
+                ele.erase(ele.begin()+i);
+                i--;
+                outnum++;
+            }
         }
+        tmp.floor=nowfloor;
+        tmp.inorout='O';
+        tmp.num=outnum;
+        runschedular.push_back(tmp);
+        for(int i=ele.size();i<10;i++){
+            if(in.at(nowfloor).num!=0&&(in.at(nowfloor).to-nowfloor)/abs(in.at(nowfloor.to)-nowfloor)==go){
+                ele.push_back(in.at(nowfloor));
+                in.at(nowfloor).num--;
+                innum++;
+            }
+        }
+        tmp.floor=nowfloor;
+        tmp.inorout='I';
+        tmp.num=innum;
+        runschedular.push_back(tmp);
+        if(nowfloor==up)
+            go=-1;
+        if(nowfloor==down)
+            go=1;
+        nowfloor+=go;
     }
-    tmp.num=0;
-    tmp.inorout='E';
     tmp.floor=0;
+    tmp.inorout='E';
+    tmp.num=0;
     runschedular.push_back(tmp);
     for(int i=0;i<runschedular.size();i++)
         qDebug()<<runschedular.at(i).floor<<runschedular.at(i).inorout<<runschedular.at(i).num;
