@@ -45,7 +45,7 @@ class JudgeWindow : public QWidget
 
     public:
         string getData(int floor,int b,int &datatimes);//input 0-26  --> 1-27
-        void setSeed(int seed = time(NULL)){srand(seed); peopleInfoState = rand()%300+1;}
+        void setSeed(int seed = time(NULL)){srand(seed); peopleInfoState = 1;}  //= rand()%300+1;}
         bool submitData(string ans);
         qint64 getSpendTime(){return costtime[floor];}
         int getConditionNum(){return peopleInfoState;}//return 1-300

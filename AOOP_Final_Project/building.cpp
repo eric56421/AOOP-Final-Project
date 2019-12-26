@@ -88,7 +88,7 @@ void Building::setupPeopleTB()
                 (Id varchar(8), Nowfloor int, Destination int, Number int,\
                 PRIMARY KEY (Id));");
 
-    if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/initial_condition.csv' \
+    if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/simple_initial_condition.csv' \
                     INTO TABLE peoplelist  \
                     FIELDS TERMINATED BY ','  \
                     ENCLOSED BY \"\"\"\" \
@@ -107,7 +107,7 @@ void Building::setupProblemTB()
                 (ID varchar(8), Floor int, Question text, Answer text,\
                 PRIMARY KEY (ID));");
 
-    if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/testdata.csv' \
+    if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/testdata_1225.csv' \
                     INTO TABLE problemlist  \
                     FIELDS TERMINATED BY ','  \
                     ENCLOSED BY \"\"\"\" \
