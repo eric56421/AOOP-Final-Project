@@ -43,6 +43,6 @@ void MyDatabase::setupCityDB()
                     LINES TERMINATED BY '\r\n' \
                     IGNORE 1 ROWS;");
 
-    qDebug() << query.lastError().text() << endl;
+    //qDebug() << query.lastError().text() << endl;
 }
 

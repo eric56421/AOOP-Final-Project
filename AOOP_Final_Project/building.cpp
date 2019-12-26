@@ -62,8 +62,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    //database.setPassword("nctuece");  //TA
-    database.setPassword("123456");  //us
+    database.setPassword("nctuece");  //TA
+    //database.setPassword("123456");  //us
 
     bool ok = database.open();
     if (ok) {
@@ -148,10 +148,10 @@ void Building::setupPeopleInfo(int peopleInfoState)
 void Building::run(int floorNum, int b)
 {
     int times;
-    //qDebug()<<floorNum;
+    qDebug()<<floorNum;
     data.testdata = judge.getData(floorNum, b,times);
     if(data.testdata!="GIVENUP"){
-        qDebug()<<"In problem: "<<QString::number(floorNum);
+        //qDebug()<<"In problem: "<<QString::number(floorNum);
         for(int i=0;i<times;i++){
             data.submit = floor[floorNum]->p->solve(data.testdata);
         }
