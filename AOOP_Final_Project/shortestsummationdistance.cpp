@@ -54,13 +54,13 @@ string ShortestSummationDistance::solve(string s)
 
         }
 
+        ans.push_back(dp[(1<<n)-1]);
+
         delete [] dp;
         //qDebug()<<"Returning memory";
         for(int i=0;i<n;i++)
             delete [] dis[i];
         delete [] dis;
-
-        ans.push_back(dp[(1<<n)-1]);
         //qDebug()<<"Success leaving";
     }
 
