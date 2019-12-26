@@ -23,10 +23,10 @@ Building::Building()  // 30 is the # of states in data.csv
     floor[15] = new Floor(new P15);//FindThePeriodOfString
     floor[16] = new Floor(new P16);//LargeFactorial
     floor[17] = new Floor(new P17);//SumOfLargeHexadecimalIntegers
-//    floor[18] = new Floor(new P18);
-//    floor[19] = new Floor(new P19);
-//    floor[20] = new Floor(new P20);
-//    floor[21] = new Floor(new P21);
+    floor[18] = new Floor(new P18);//LongestCommonSubstring
+    floor[19] = new Floor(new P19);//GetSolution
+    floor[20] = new Floor(new P20);//LongestPeekPalindrome
+    floor[21] = new Floor(new P21);//Maze
     floor[22] = new Floor(new P22);//TheEasyCity1
     floor[23] = new Floor(new P23);//ManhattanDistance
 //    floor[24] = new Floor(new P24);
@@ -48,6 +48,7 @@ Building::Building()  // 30 is the # of states in data.csv
     judge.giveout[12].setCheckState(Qt::Checked);
     judge.giveout[24].setCheckState(Qt::Unchecked);
     judge.giveout[21].setCheckState(Qt::Unchecked);
+    judge.giveout[18].setCheckState(Qt::Unchecked);
 }
 
 void Building::connectMySQL()

@@ -52,17 +52,17 @@ typedef LargeFactorial P16;
 #include "sumoflargehexadecimalintegers.h"
 typedef SumOfLargeHexadecimalIntegers P17;
 
-//#include ""
-//typedef P18;
+#include "longestcommonsubstring.h"
+typedef LongestCommonSubstring P18;
 
-//#include ""
-//typedef P19;
+#include "getsolution.h"
+typedef GetSolution P19;
 
-//#include ""
-//typedef P20;
+#include "longestpeekpalindrome.h"
+typedef LongestPeekPalindrome P20;
 
-//#include ""
-//typedef P21;
+#include "maze.h"
+typedef Maze P21;
 
 #include "theeasycity1.h"
 typedef TheEasyCity1 P22;

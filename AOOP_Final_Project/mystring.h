@@ -1,6 +1,8 @@
 #ifndef MYSTRING_H
 #define MYSTRING_H
 
+#include <sstream>
+
 #include "problemset.h"
 
 using namespace std;

@@ -26,15 +26,19 @@ SOURCES += \
     findtheperiodofstring.cpp \
     floor.cpp \
     getsignature.cpp \
+    getsolution.cpp \
     judge.cpp \
     judgewindow.cpp \
     largefactorial.cpp \
     largesroot.cpp \
     longestandshortestdistance.cpp \
+    longestcommonsubstring.cpp \
+    longestpeekpalindrome.cpp \
     main.cpp \
     mainwindow.cpp \
     manhattandistance.cpp \
     marioojisan.cpp \
+    maze.cpp \
     minesweeper.cpp \
     mydatabase.cpp \
     mymath.cpp \
@@ -66,14 +70,18 @@ HEADERS += \
     findtheperiodofstring.h \
     floor.h \
     getsignature.h \
+    getsolution.h \
     judge.h \
     judgewindow.h \
     largefactorial.h \
     largesroot.h \
     longestandshortestdistance.h \
+    longestcommonsubstring.h \
+    longestpeekpalindrome.h \
     mainwindow.h \
     manhattandistance.h \
     marioojisan.h \
+    maze.h \
     minesweeper.h \
     mydatabase.h \
     mymath.h \
