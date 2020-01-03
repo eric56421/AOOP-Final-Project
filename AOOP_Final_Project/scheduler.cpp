@@ -17,7 +17,7 @@ void Scheduler::reset()
 
 void Scheduler::solve(vector<People> in)
 {
-/*    runschedular.clear();
+    runschedular.clear();
     qDebug()<<"hi";
     for(int i=0;i<in.size();i++)
         qDebug()<<in.at(i).num<<in.at(i).to;
@@ -52,8 +52,8 @@ void Scheduler::solve(vector<People> in)
     for(int i=0;i<runschedular.size()-1;i++)
         out<<runschedular.at(i).floor<<","<<runschedular.at(i).inorout<<","<<runschedular.at(i).num<<endl;
 
-    out.close();*/
-    runschedular.clear();
+    out.close();
+    /*runschedular.clear();
     for(int i=0;i<in.size();i++)
         qDebug()<<in.at(i).num<<in.at(i).to;
 
@@ -146,5 +146,5 @@ void Scheduler::solve(vector<People> in)
     for(int i=0;i<runschedular.size()-1;i++)
         out<<runschedular.at(i).floor<<","<<runschedular.at(i).inorout<<","<<runschedular.at(i).num<<endl;
 
-    out.close();
+    out.close();*/
 }
