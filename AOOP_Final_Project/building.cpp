@@ -29,7 +29,7 @@ Building::Building()  // 30 is the # of states in data.csv
     floor[21] = new Floor(new P21);//Maze
     floor[22] = new Floor(new P22);//TheEasyCity1
     floor[23] = new Floor(new P23);//ManhattanDistance
-//    floor[24] = new Floor(new P24);
+    floor[24] = new Floor(new P24);//TheMedian
     floor[25] = new Floor(new P25);//TheEasyCity2
     floor[26] = new Floor(new P26);//LongestAndShortestDistance
     floor[27] = new Floor(new P27);//SymmetricPairs
@@ -44,7 +44,7 @@ Building::Building()  // 30 is the # of states in data.csv
 //    judge.giveout[8].setCheckState(Qt::Checked);
 //    judge.giveout[12].setCheckState(Qt::Checked);
 //    judge.giveout[20].setCheckState(Qt::Checked);
-    judge.giveout[23].setCheckState(Qt::Checked);
+//    judge.giveout[23].setCheckState(Qt::Checked);
 //    for (int i=0; i<27; i++)
 //        judge.giveout[i].setCheckState(Qt::Checked);
 //    judge.giveout[8].setCheckState(Qt::Unchecked);
@@ -62,8 +62,8 @@ void Building::connectMySQL()
     database.setPort(3306);
     database.setUserName("root");
 
-    database.setPassword("nctuece");  //TA
-    //database.setPassword("123456");  //us
+//    database.setPassword("nctuece");  //TA
+    database.setPassword("123456");  //us
 
     bool ok = database.open();
     if (ok) {

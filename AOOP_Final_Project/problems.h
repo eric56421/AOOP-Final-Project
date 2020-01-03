@@ -70,8 +70,8 @@ typedef TheEasyCity1 P22;
 #include "manhattandistance.h"
 typedef ManhattanDistance P23;
 
-//#include ""
-//typedef P24;
+#include "themedian.h"
+typedef TheMedian P24;
 
 #include "theeasycity2.h"
 typedef TheEasyCity2 P25;

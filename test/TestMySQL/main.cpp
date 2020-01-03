@@ -21,14 +21,14 @@ int main()
     string s, ans, theans, queryCmd;
     stringstream token;
 
-    int a, b, m;
-    string lalo, ad;                      // lalo -> lat/lon ad -> asc/des
+    int m, n, k;
+    string eo;                      // eo -> even/odd
 
     getline(cin, s);
     getline(cin, theans);
     cout<<endl<<"Command"<<endl;
     token<<s;
-    token>>a>>b>>lalo>>m>>ad;
+    token>>eo>>m>>n>>k;
 
     token.str("");
     token.clear();
@@ -49,37 +49,42 @@ int main()
         token<<' '<<query.value(0).toString().toStdString();
     */
 
-    // 7
-    queryCmd = "select avg(" + lalo + ") from ";
-
-    string tmp = " from (select " + lalo + " from citytable where id%10 = " + to_string(m) + " order by " + lalo;
-    if (ad == "asc")
-        tmp += " asc ";
+    // 14
+    queryCmd = "update citytable set lat=lon, lon=@tmp where (@tmp:=lat) is not null and id%2 = ";
+    if (eo == "ev")
+        queryCmd += "0;";
     else
-        tmp += " desc ";
-    tmp += " limit " + to_string(a-1) + ", " + to_string(b-a+1) + ") as t1) ";
-    // string tmp1 = " from citytable where id%10 = " + to_string(m) + " order by " + lalo;
-    // if (ad == "asc")
-    //     tmp1 += " asc ";
-    // else
-    //     tmp1 += " desc ";
-    // tmp += " limit " + to_string(a-1) + ", " + to_string(b-a+1) + ") ";
+        queryCmd += "1;";
+    cout<<queryCmd<<endl;
+    query.exec(queryCmd.c_str());
+    
+    // 15
+    queryCmd = "update citytable set lat = lon where id%10 = " + to_string(m) + ";";
+    cout<<queryCmd<<endl;
+    query.exec(queryCmd.c_str());
+    
+    // 16
+    queryCmd = "select x1, y1 from ( ";
+    queryCmd += "select distinct t1.x x1, t1.y y1, t2.x x2, t2.y y2 from ";
+    string ifLatRound = "if(round(lat, " + to_string(n) + ") =-0, 0, round(lat, " + to_string(n) + ")) ";
+    string ifLonRound = "if(round(lon, " + to_string(n) + ") =-0, 0, round(lon, " + to_string(n) + ")) ";
+    string tmp = "(select id, " + ifLatRound + " as x, " + ifLonRound + " as y from citytable) as ";
+    queryCmd += tmp + "t1 join " + tmp + "t2 ";
+    queryCmd += "on t1.id != t2.id where t1.x = t2.y and t1.y = t2.x and t1.x <= t1.y ) as t3 ";
+    queryCmd += "order by x1, y1 ";
+    queryCmd += "limit " + to_string(k-1) + ", 1;";
 
-    queryCmd += "(select row_number() over (order by " + lalo;
-    if (ad == "asc")
-        queryCmd += " asc ";
-    else
-        queryCmd += " desc ";
-    queryCmd += ") as row_num, " + lalo + tmp + "as t2 join ";
-    queryCmd += "(select count(" + lalo + ") as cnt " + tmp + "as t3 ";
-    queryCmd += "where row_num = if(cnt%2=0, cnt/2, (cnt+1)/2) or row_num = if(cnt%2=0, cnt/2+1, (cnt+1)/2);";
     cout<<queryCmd<<endl;
     query.exec(queryCmd.c_str());
     query.next();
     if (query.value(0).isNull())
         token<<"NULL";
     else
-        token<<fixed<<setprecision(4)<<query.value(0).toDouble();
+        token<<fixed<<setprecision(n)<<query.value(0).toDouble();
+    if (query.value(1).isNull())
+        token<<" NULL";
+    else
+        token<<fixed<<setprecision(n)<<' '<<query.value(1).toDouble();
 
     ans = token.str();
     cout<<endl<<endl;
@@ -103,9 +108,9 @@ void connectMySQL()
 
     bool ok = database.open();
     if (ok) {
-        cout<<"Successful connectsn.";
+        cout<<"Successful connectsn."<<endl;
     } else {
-        cout<<"Error: Cannot connect!!!";
+        cout<<"Error: Cannot connect!!!"<<endl;
     }
 }
 
@@ -120,7 +125,7 @@ void setupCityDB()
                 ID INT, COUNTRY VARCHAR(50), CITY VARCHAR(60),\
                 LAT DOUBLE, LON DOUBLE, PRIMARY KEY(ID)\
                 );");
-    query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city.csv'\
+    query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city_forFinal4.csv'\
                     INTO TABLE CITYTABLE  \
                     FIELDS TERMINATED BY ','  \
                     ENCLOSED BY '\"' \
