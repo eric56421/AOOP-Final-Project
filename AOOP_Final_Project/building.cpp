@@ -151,7 +151,6 @@ void Building::run(int floorNum, int b)
     qDebug()<<floorNum;
     data.testdata = judge.getData(floorNum, b,times);
     if(data.testdata!="GIVENUP"){
-        //qDebug()<<"In problem: "<<QString::number(floorNum);
         for(int i=0;i<times;i++){
             data.submit = floor[floorNum]->p->solve(data.testdata);
         }
@@ -202,6 +201,7 @@ void Building::update()
             this->run(nowstate.floor,nowstate.inorout=='I'?1:0);
             emit this->updateGUI();
         }
+        judge.showPeopleInfo();
         timer->start(100);
     }
     emit this->updateGUI();
