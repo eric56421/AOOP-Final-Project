@@ -11,6 +11,9 @@ class ShyGame : public MyMath
 {
     vector<int> in,people;
     int n,num,now;
+    string ts;
+    stringstream ss, t;
+    int p, st[100000], i, j, M;
     public:
         ShyGame();
         virtual string solve(string s) override;
