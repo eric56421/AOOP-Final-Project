@@ -11,6 +11,7 @@ class LongestCommonSubstring : public MyString
         LongestCommonSubstring();
         virtual string solve(string s);
         string lcs(string X, string Y);
+        string preProcess(const string &s);
 };
 
 #endif // LONGESTCOMMONSUBSTRING_H

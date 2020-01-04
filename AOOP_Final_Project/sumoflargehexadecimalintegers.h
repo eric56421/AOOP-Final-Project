@@ -12,6 +12,8 @@ class SumOfLargeHexadecimalIntegers : public MyMath
     public:
         SumOfLargeHexadecimalIntegers();
         virtual string solve(string s) override;
+        inline short transtoint(const char &);
+        inline char transtochar(const short &);
 };
 
 #endif // SUMOFLARGEHEXADECIMALINTEGERS_H

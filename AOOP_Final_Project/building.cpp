@@ -46,6 +46,7 @@ Building::Building()  // 30 is the # of states in data.csv
 //    judge.giveout[20].setCheckState(Qt::Checked);
     for(int i=21;i<27;i++)
         judge.giveout[i].setCheckState(Qt::Checked);
+    judge.giveout[4-1].setCheckState(Qt::Unchecked);
 //    for (int i=0; i<27; i++)
 //        judge.giveout[i].setCheckState(Qt::Checked);
 //    judge.giveout[8].setCheckState(Qt::Unchecked);

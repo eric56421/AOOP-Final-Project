@@ -21,6 +21,7 @@ class ShortestAndLongestPair : public MyMath
     public:
         ShortestAndLongestPair();
         virtual string solve(string s) override;
+        double sqrtOfDis(const Point &p1,const Point &p2);
 };
 
 #endif // SHORTESTANDLONGESTPAIR_H

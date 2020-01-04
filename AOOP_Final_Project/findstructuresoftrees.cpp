@@ -7,18 +7,32 @@ FindStructuresOfTrees::FindStructuresOfTrees()
 
 string FindStructuresOfTrees::solve(string s)
 {
+//    stringstream ss;
+//    ss<<s;
+//    ss>>pre>>in;
+
+//    index = 0;
+//    int rootpos=in.find_first_of(pre.at(index++));
+
+//    post=divide(in.substr(0,rootpos));
+//    post+=divide(in.substr(rootpos+1));
+//    post+=in.at(rootpos);
+
+//    return post;
     stringstream ss;
+    string pre,in;
     ss<<s;
     ss>>pre>>in;
+    ans="";
+    for(int i=0;i<pre.size();i++)
+    {
+        inO[i]=in[i];
+        preO[i]=pre[i];
+    }
 
-    index = 0;
-    int rootpos=in.find_first_of(pre.at(index++));
+    printPostOrder(inO,preO,pre.size());
 
-    post=divide(in.substr(0,rootpos));
-    post+=divide(in.substr(rootpos+1));
-    post+=in.at(rootpos);
-
-    return post;
+    return ans.substr(0,pre.size());
 }
 
 string FindStructuresOfTrees::divide(string s)
@@ -37,4 +51,23 @@ string FindStructuresOfTrees::divide(string s)
         return tmp;
     }
     return "";
+}
+
+int FindStructuresOfTrees::search(char arr[],int x,int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+        if(arr[i]==x)
+         return i;
+    return -1;
+}
+
+void FindStructuresOfTrees::printPostOrder(char inOrder[],char preOrder[],int n)
+{
+    int rootNode=search(inOrder,preOrder[0],n);
+    if(rootNode)
+        printPostOrder(inOrder,preOrder+1,rootNode);
+    if(rootNode!=n-1)
+        printPostOrder(inOrder+rootNode+1,preOrder+rootNode+1,n-rootNode-1);
+    ans+=preOrder[0];
 }

@@ -71,8 +71,8 @@ string JudgeWindow::getData(int floor,int b,int &datatimes)
     query.next();
     string question = query.value(2).toString().toStdString();
     this->ans = query.value(3).toString().toStdString();
-    qDebug()<<QString::fromStdString(question)<<endl;
-    qDebug()<<QString::fromStdString(this->ans)<<endl;
+    //qDebug()<<QString::fromStdString(question)<<endl;
+    //qDebug()<<QString::fromStdString(this->ans)<<endl;
 
     if(b==0)
         peopleinelevator--;
@@ -90,8 +90,8 @@ string JudgeWindow::getData(int floor,int b,int &datatimes)
 bool JudgeWindow::submitData(string ans)
 {
     runtime=timer.nsecsElapsed();
-    qDebug()<<QString::fromStdString(ans)<<endl;
-    qDebug()<<QString::fromStdString(this->ans)<<endl;
+    //qDebug()<<QString::fromStdString(ans)<<endl;
+    //qDebug()<<QString::fromStdString(this->ans)<<endl;
     showPeopleInfo();
     if(ans == this->ans){
         this->costtime[floor] += runtime/floordatatimes[this->floor];
