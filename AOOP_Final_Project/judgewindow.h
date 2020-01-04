@@ -75,6 +75,7 @@ class JudgeWindow : public QWidget
         int runtime;
         int floornextdata[28];
         long long score[28];
+        string question;
         //vector<People> floorPeople;
         //vector<int> arrival;
 

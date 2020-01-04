@@ -7,7 +7,11 @@ using namespace std;
 
 class GetSolution : public MyMath
 {
-    int n,row,col,i,j,mul;
+    int n,i,j,k,r;
+    double p;
+    double *ans;
+    double **matrix;
+    int min;
     public:
         GetSolution();
         virtual string solve(string s) override;

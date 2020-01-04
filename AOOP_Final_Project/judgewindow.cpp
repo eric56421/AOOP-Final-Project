@@ -69,7 +69,7 @@ string JudgeWindow::getData(int floor,int b,int &datatimes)
     //qDebug()<<floor<<"  "<<QString::fromStdString(queryCmd);
 
     query.next();
-    string question = query.value(2).toString().toStdString();
+    question = query.value(2).toString().toStdString();
     this->ans = query.value(3).toString().toStdString();
     //qDebug()<<QString::fromStdString(question)<<endl;
     //qDebug()<<QString::fromStdString(this->ans)<<endl;
@@ -94,9 +94,16 @@ bool JudgeWindow::submitData(string ans)
     //qDebug()<<QString::fromStdString(this->ans)<<endl;
     showPeopleInfo();
     if(ans == this->ans){
+        if(floor==19)
+            qDebug()<<floornextdata[floor]<<"correct";
         this->costtime[floor] += runtime/floordatatimes[this->floor];
         correctansnum[floor]++;
         score[floor]+=(10000000000+pow(2,floornextdata[floor]));
+    }else if(floor==19){
+        qDebug()<<floornextdata[floor]<<"error";
+        qDebug()<<QString::fromStdString(question)<<endl;
+        qDebug()<<QString::fromStdString(this->ans)<<endl;
+        qDebug()<<QString::fromStdString(ans)<<endl;
     }
     floornextdata[floor]++;
     questionnum[floor]++;
