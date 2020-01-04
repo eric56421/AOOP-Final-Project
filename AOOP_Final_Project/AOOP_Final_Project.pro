@@ -58,7 +58,8 @@ SOURCES += \
     symmetricpairs.cpp \
     theeasycity1.cpp \
     sumoflargehexadecimalintegers.cpp \
-    theeasycity2.cpp
+    theeasycity2.cpp \
+    themedian.cpp
 
 HEADERS += \
     add1.h \
@@ -102,7 +103,8 @@ HEADERS += \
     symmetricpairs.h \
     theeasycity1.h \
     sumoflargehexadecimalintegers.h \
-    theeasycity2.h
+    theeasycity2.h \
+    themedian.h
 
 FORMS += \
     judgewindow.ui \

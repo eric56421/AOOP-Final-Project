@@ -64,10 +64,14 @@ int main()
     query.exec(queryCmd.c_str());
     
     // 16
-    queryCmd = "select distinct t1.x, t1.y, t2.x, t2.y from ";
-    string tmp = "(select id, round(lat, " + to_string(n) + ") as x, round(lon, " + to_string(n) + ") as y from citytable) as ";
+    queryCmd = "select x1, y1 from ( ";
+    queryCmd += "select distinct t1.x x1, t1.y y1, t2.x x2, t2.y y2 from ";
+    string ifLatRound = "if(round(lat, " + to_string(n) + ") =-0, 0, round(lat, " + to_string(n) + ")) ";
+    string ifLonRound = "if(round(lon, " + to_string(n) + ") =-0, 0, round(lon, " + to_string(n) + ")) ";
+    string tmp = "(select id, " + ifLatRound + " as x, " + ifLonRound + " as y from citytable) as ";
     queryCmd += tmp + "t1 join " + tmp + "t2 ";
-    queryCmd += "on t1.id != t2.id where t1.x = t2.y and t1.y = t2.x and t1.x <= t1.y order by t1.x, t1.y ";
+    queryCmd += "on t1.id != t2.id where t1.x = t2.y and t1.y = t2.x and t1.x <= t1.y ) as t3 ";
+    queryCmd += "order by x1, y1 ";
     queryCmd += "limit " + to_string(k-1) + ", 1;";
 
     cout<<queryCmd<<endl;
@@ -76,11 +80,11 @@ int main()
     if (query.value(0).isNull())
         token<<"NULL";
     else
-        token<<fixed<<setprecision(1)<<query.value(0).toDouble();
+        token<<fixed<<setprecision(n)<<query.value(0).toDouble();
     if (query.value(1).isNull())
         token<<" NULL";
     else
-        token<<fixed<<setprecision(1)<<' '<<query.value(1).toDouble();
+        token<<fixed<<setprecision(n)<<' '<<query.value(1).toDouble();
 
     ans = token.str();
     cout<<endl<<endl;
@@ -104,9 +108,9 @@ void connectMySQL()
 
     bool ok = database.open();
     if (ok) {
-        cout<<"Successful connectsn.";
+        cout<<"Successful connectsn."<<endl;
     } else {
-        cout<<"Error: Cannot connect!!!";
+        cout<<"Error: Cannot connect!!!"<<endl;
     }
 }
 
@@ -121,7 +125,7 @@ void setupCityDB()
                 ID INT, COUNTRY VARCHAR(50), CITY VARCHAR(60),\
                 LAT DOUBLE, LON DOUBLE, PRIMARY KEY(ID)\
                 );");
-    query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city.csv'\
+    query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city_forFinal4.csv'\
                     INTO TABLE CITYTABLE  \
                     FIELDS TERMINATED BY ','  \
                     ENCLOSED BY '\"' \

@@ -8,7 +8,7 @@ ID INT, COUNTRY VARCHAR(50), CITY VARCHAR(60),
 LAT DOUBLE, LON DOUBLE, PRIMARY KEY(ID)
 );
 
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city.csv' 
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/city_forFinal4.csv' 
                     INTO TABLE CITYTABLE  
                     FIELDS TERMINATED BY ','  
                     ENCLOSED BY '"' 

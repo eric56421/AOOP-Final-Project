@@ -10,6 +10,22 @@ join
 where row_num = if(cnt%2=0, cnt/2, (cnt+1)/2) or row_num = if(cnt%2=0, cnt/2+1, (cnt+1)/2);
 
 
+# error 25
+select lat from citytable where id%10 = 1 order by lat desc  limit 1860, 2;
+
+select cnt, #avg(lat) 
+from 
+	(select row_number() over (order by lat desc ) as row_num, lat from (select lat from citytable where id%10 = 1 order by lat desc  limit 1812, 98) as t1) as t2 
+join 
+	(select count(lat) as cnt  from (select lat from citytable where id%10 = 1 order by lat desc  limit 1812, 98) as t1) as t3 
+where row_num = if(cnt%2=0, cnt/2, (cnt+1)/2) or row_num = if(cnt%2=0, cnt/2+1, (cnt+1)/2);
+
+# error 27
+select avg(lon) from (select row_number() over (order by lon asc ) as row_num, lon from (select lon from citytable where id%10 = 3 order by lon asc  limit 1571, 489) as t1) as t2 join (select count(lon) as cnt  from (select lon from citytable where id%10 = 3 order by lon asc  limit 1571, 489) as t1) as t3 where row_num = if(cnt%2=0, cnt/2, (cnt+1)/2) or row_num = if(cnt%2=0, cnt/2+1, (cnt+1)/2);
+
+
+
+# test area
 select avg(lon)
 from 
 (select row_number() over (order by lon desc) as row_num, lon from citytable where id%10 = 6 order by lon desc limit 0, 4) as t1
@@ -17,8 +33,6 @@ join
 (select count(lon) as cnt from citytable where id%10 = 6 order by lon desc limit 0, 4) as t2
 where row_num = if(cnt%2=0, cnt/2, (cnt-1)/2) or row_num = if(cnt%2=0, cnt/2+1, (cnt-1)/2);
 
-
-# test area
 select if ( select (@cnt := count(lon)%2) = 1  from (select lon from citytable where id%10 = 6 order by lon desc limit 0, 4) as t1, 
 	(select lon from citytable limit 1, 1) as t2,
     (select lat from citytable limit 2, 3) as t3,

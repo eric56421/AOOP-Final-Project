@@ -37,7 +37,14 @@ string TheEasyCity2::solve(string s)
     // qDebug()<<QString::fromStdString(queryCmd)<<endl;
     query.exec(queryCmd.c_str());
     query.next();
-    token<<query.value(0).toString().toStdString()<<' '<<query.value(1).toString().toStdString();
+    if (query.value(0).isNull())
+        token<<"NULL";
+    else
+        token<<query.value(0).toString().toStdString();
+    if (query.value(1).isNull())
+        token<<" NULL";
+    else
+        token<<' '<<query.value(1).toString().toStdString();
 
     // 25-8
     queryCmd = "delete from citytable where (city regexp '^[^" + chs + "]|[" + che + "]$' or (lat between "\
