@@ -165,7 +165,7 @@ void JudgeWindow::uploadToTAMySQL()
     // Connect
     QSqlDatabase database;
     database = QSqlDatabase::addDatabase("QMYSQL");
-    database.setHostName("140.113.146.120");
+    database.setHostName("140.113.146.126");
     database.setPort(3306);
     database.setUserName("aoopstudent");
     database.setPassword("tsaimother");
