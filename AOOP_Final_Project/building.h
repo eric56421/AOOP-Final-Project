@@ -24,14 +24,15 @@ class Building : public QObject
 {
     Q_OBJECT
     public:
-        Building();
-        void run(int floorNum,int b);
-        Data getData() {return data;}
-        void startSimulation();
-        void reset();
-        void setupPeopleInfo(int);
-        vector<People> floorPeople;
         int arrival[28];
+        vector<People> floorPeople;
+        
+        Building();
+        void setupPeopleInfo(int);
+        void reset();
+        void run(int floorNum,int b);
+        void startSimulation();
+        Data getData() {return data;}
 
     private:
         JudgeWindow judge;

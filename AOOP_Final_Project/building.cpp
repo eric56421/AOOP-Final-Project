@@ -41,6 +41,7 @@ Building::Building()  // 30 is the # of states in data.csv
     judge.setSeed(0);
     int n=judge.getConditionNum();
     setupPeopleInfo(n);
+    
     judge.giveout[7].setCheckState(Qt::Checked);
 //    judge.giveout[12].setCheckState(Qt::Checked);
 //    judge.giveout[20].setCheckState(Qt::Checked);
@@ -91,7 +92,7 @@ void Building::setupPeopleTB()
     if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/simple_initial_condition.csv' \
                     INTO TABLE peoplelist  \
                     FIELDS TERMINATED BY ','  \
-                    ENCLOSED BY \"\"\"\" \
+                    ENCLOSED BY '\"' \
                     LINES TERMINATED BY '\n' \
                     IGNORE 1 ROWS;"))
         qDebug()<<query.lastError().text();
@@ -110,7 +111,7 @@ void Building::setupProblemTB()
     if (!query.exec("LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/testdata_1225.csv' \
                     INTO TABLE problemlist  \
                     FIELDS TERMINATED BY ','  \
-                    ENCLOSED BY \"\"\"\" \
+                    ENCLOSED BY '\"' \
                     LINES TERMINATED BY '\r\n' \
                     IGNORE 1 ROWS;"))
         qDebug()<<query.lastError().text();
@@ -133,7 +134,6 @@ void Building::setupPeopleInfo(int peopleInfoState)
     floorPeople.resize(28);
     while (query.next()) {
         int at, to, num;
-
         at = query.value(1).toInt();
         to = query.value(2).toInt();
         num = query.value(3).toInt();
@@ -142,14 +142,13 @@ void Building::setupPeopleInfo(int peopleInfoState)
         floorPeople.at(at).to = to;
         floorPeople.at(at).num = num;
     }
-
 }
 
 void Building::run(int floorNum, int b)
 {
     int times;
     qDebug()<<floorNum;
-    data.testdata = judge.getData(floorNum, b,times);
+    data.testdata = judge.getData(floorNum, b, times);
     if(data.testdata!="GIVENUP"){
         for(int i=0;i<times;i++){
             data.submit = floor[floorNum]->p->solve(data.testdata);

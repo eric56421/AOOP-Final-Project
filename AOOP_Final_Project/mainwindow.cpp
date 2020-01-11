@@ -15,8 +15,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
 void MainWindow::on_RunButton_clicked()
 {
     EE.run(ui->Slectfloorbox->currentIndex()+1,0);

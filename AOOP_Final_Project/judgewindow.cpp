@@ -23,6 +23,7 @@ JudgeWindow::JudgeWindow(QWidget *parent) :
         floorLabel[i].setNum(i+1);
         ui->InformationGridLayOut->addWidget(&floorLabel[i], i, 6);
     }
+    
     for(int i=0;i<28;i++){
         floordatatimes[i] = 10;
         floornextdata[i]= 0;

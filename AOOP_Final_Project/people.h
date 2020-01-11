@@ -14,7 +14,6 @@ public:
     People() {to = 0; num = 0;}
     int to;
     int num;
-
 };
 
 #endif // PEOPLE_H
