@@ -2,7 +2,7 @@
 
 MyDatabase::MyDatabase()
 {
-    //connectMySQL();
+    connectMySQL();
     setupCityDB();
 }
 
@@ -42,7 +42,8 @@ void MyDatabase::setupCityDB()
                     ENCLOSED BY '\"' \
                     LINES TERMINATED BY '\r\n' \
                     IGNORE 1 ROWS;");
-
+            qDebug()<<query.lastError().text();
+            qDebug()<<"hi";
     //qDebug() << query.lastError().text() << endl;
 }
 

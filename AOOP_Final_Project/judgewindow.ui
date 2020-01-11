@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1386</width>
-    <height>731</height>
+    <width>1085</width>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,117 +17,89 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>30</y>
-     <width>1031</width>
+     <y>10</y>
+     <width>421</width>
      <height>681</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="InformationGridLayOut"/>
+   <layout class="QGridLayout" name="gridLayout" rowstretch="0"/>
   </widget>
-  <widget class="QLabel" name="WaitLabel">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>100</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Wait To Leave</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ArrivalLabel">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>10</y>
-     <width>100</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Arrival People</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="TotalCoastLabel">
-   <property name="geometry">
-    <rect>
-     <x>550</x>
-     <y>10</y>
-     <width>100</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TotalCost</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>10</y>
-     <width>100</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>WinOrLost</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="StudId1LineEdit">
-   <property name="geometry">
-    <rect>
-     <x>1090</x>
-     <y>80</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="StudName1LineEdit">
-   <property name="geometry">
-    <rect>
-     <x>1240</x>
-     <y>80</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="StudId2LineEdit">
-   <property name="geometry">
-    <rect>
-     <x>1090</x>
-     <y>120</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="StudName2LineEdit">
-   <property name="geometry">
-    <rect>
-     <x>1240</x>
-     <y>120</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="ExportButton">
-   <property name="geometry">
-    <rect>
-     <x>1180</x>
-     <y>650</y>
-     <width>121</width>
+     <x>620</x>
+     <y>570</y>
+     <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>Export to database</string>
+    <string>PushButton</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>80</y>
+     <width>271</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="overWeightLabel">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="TotalPeopleLabel">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="TotalPathLabel">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="TotalScoreLabel">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

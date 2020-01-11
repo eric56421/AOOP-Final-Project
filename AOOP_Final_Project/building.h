@@ -39,11 +39,7 @@ class Building : public QObject
         Floor *floor[28];
         Data data;
         QTimer *timer;
-        Scheduler scheduler;        
-
-        void connectMySQL();
-        void setupProblemTB();
-        void setupPeopleTB();
+        Scheduler scheduler;
 
     public slots:
         void update();
