@@ -38,63 +38,81 @@ void Scheduler::solve(vector<People> in)
         highest = in.at(i).to > highest ? in.at(i).to : highest;
     }
 
+
+    out.open("Schedule_Tmp.txt");
+    if(!out){
+        qDebug()<<"open tmp file failed"<<endl;
+    }else{
+        qDebug()<<"open tmp file successful"<<endl;
+    }
+    out << lowest << ' ' << highest << endl;
+    for (int i=1; i<floor.size(); i++)
+        out<<fixed<<setw(2)<<i<<": "<<setw(2)<<floor.at(i).toUp<<", "<<setw(2)<<floor.at(i).toDown<<", "<<setw(2)<<floor.at(i).fromUp<<", "<<setw(2)<<floor.at(i).fromDown<<endl;
+    out.close();
+    qDebug()<<"output to tmp";
+
     while (lowest <= highest) {
         tmp.floor = nowFloor;
 
         // Entering floor
         tmp.inorout = 'O';
-        // Entering floor at terminal
-        if (nowDir == 1 && (nowFloor == highest || floor.at(nowFloor).toUp == 0)) {
-            if (floor.at(nowFloor).fromDown <= 0)
-                qDebug()<<"error1";            
-            // check;
-            if (nowNum) {
-                tmp.num = nowNum;
+        if (nowNum) {
+            // Entering floor at terminal
+            if (nowDir == 1 && (nowFloor == highest /*|| floor.at(nowFloor).toUp == 0*/)) {
+                if (floor.at(nowFloor).fromDown <= 0)
+                    qDebug()<<"error1";
+                // check;
+                if (nowNum) {
+                    tmp.num = min(nowNum, floor.at(nowFloor).fromDown);
+                    runschedular.push_back(tmp);
+
+                    nowNum -= tmp.num;
+                    floor.at(nowFloor).fromDown -= tmp.num;
+                }
+                else {
+                    qDebug()<<"error1_1";
+                }
+            }
+            else if (nowDir == 0 && (nowFloor == lowest /*|| floor.at(nowFloor).toDown == 0*/)) {
+                if (floor.at(nowFloor).fromUp <= 0)
+                    qDebug()<<"error2";
+                if (nowNum) {
+                    tmp.num = min(nowNum, floor.at(nowFloor).fromUp);
+                    runschedular.push_back(tmp);
+
+                    nowNum -= tmp.num;
+                    floor.at(nowFloor).fromUp -= tmp.num;
+                }
+                else {
+                    qDebug()<<"error2_1";
+                }
+            }
+            /*
+            // Enter floor at middle
+            else if (nowDir == 1 && floor.at(nowFloor).fromDown && nowNum) {
+                tmp.num = min(nowNum, floor.at(nowFloor).fromDown);
+                if (tmp.num <= 0)
+                    qDebug()<<"error3";
                 runschedular.push_back(tmp);
-                
-                nowNum = 0;            
+
                 floor.at(nowFloor).fromDown -= tmp.num;
+                nowNum -= tmp.num;
             }
-            else {
-                qDebug()<<"error1_1";
-            }
-        }
-        else if (nowDir == 0 && (nowFloor == lowest || floor.at(nowFloor).toDown == 0)) {
-            if (floor.at(nowFloor).fromUp <= 0)
-                qDebug()<<"error2";
-            if (nowNum) {
-                tmp.num = nowNum;
+            else if (nowDir == 0 && floor.at(nowFloor).fromUp && nowNum) {
+                tmp.num = min(nowNum, floor.at(nowFloor).fromUp);
+                if (tmp.num <= 0)
+                    qDebug()<<"error4";
                 runschedular.push_back(tmp);
-                
-                nowNum = 0;
+
                 floor.at(nowFloor).fromUp -= tmp.num;
+                nowNum -= tmp.num;
             }
-            else {
-                qDebug()<<"error2_1"
-            }
+            */
         }
-        // Enter floor at middle
-        else if (nowDir == 1 && floor.at(nowFloor).fromDown && nowNum) {
-            tmp.num = min(nowNum, floor.at(nowFloor).fromDown);
-            if (tmp.num <= 0)
-                qDebug()<<"error3";
-            runschedular.push_back(tmp);
 
-            floor.at(nowFloor).fromDown -= tmp.num;
-            nowNum -= tmp.num;
-        }
-        else if (nowDir == 0 && floor.at(nowFloor).fromUp && nowNum) {
-            tmp.num = min(nowNum, floor.at(nowFloor).fromUp);
-            if (tmp.num <= 0)
-                qDebug()<<"error4";
-            runschedular.push_back(tmp);
-
-            floor.at(nowFloor).fromUp -= tmp.num;
-            nowNum -= tmp.num;
-        }
 
         // change dir;
-        if (nowDir == 1) {
+        if (nowDir == 1 && nowFloor >= highest) {
             nowDir = 0;
             for (int i=27; i>nowFloor; i--)
                 if (floor.at(i).toDown) {
@@ -102,7 +120,7 @@ void Scheduler::solve(vector<People> in)
                     break;
                 }
         }
-        else {
+        else if (nowDir == 0 && nowFloor <= lowest){
             nowDir = 1;
             for (int i=1; i<nowFloor; i++)
                 if (floor.at(i).toUp) {
