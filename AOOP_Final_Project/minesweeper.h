@@ -8,16 +8,13 @@
 
 using namespace std;
 
+struct mi{
+    int x;
+    int y;
+};
+
 class Minesweeper : public MyOther
 {
-    struct Point2D{
-        int x;
-        int y;
-    };
-    int dir[8][2]={{0,-1},{-1,-1},{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1}};
-    int row,col;
-    int c=0,gox,goy;
-    string tmp;
     public:
         Minesweeper();
         virtual string solve(string s) override;

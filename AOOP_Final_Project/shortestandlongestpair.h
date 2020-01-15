@@ -14,14 +14,13 @@ struct Point{
 
 class ShortestAndLongestPair : public MyMath
 {
-    vector<Point3D> data;
-    double dx,dy,dz;
-    double x,y,z;
-    double max_dis,min_dis;
     public:
         ShortestAndLongestPair();
         virtual string solve(string s) override;
-        double sqrtOfDis(const Point &p1,const Point &p2);
+        double sqrtOfDis(const Point &p1,const Point &p2)
+        {
+            return (p1.x-p2.x)*(p1.x-p2.x)+ (p1.y-p2.y)*(p1.y-p2.y)+ (p1.z-p2.z)*(p1.z-p2.z);
+        }
 };
 
 #endif // SHORTESTANDLONGESTPAIR_H

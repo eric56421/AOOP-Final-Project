@@ -3,11 +3,12 @@
 
 FindFactorial::FindFactorial()
 {
-    set();
+
 }
 
 string FindFactorial::solve(string s)
 {
+    set();
     stringstream ss;
     in = stringToVectorInt(s);
     for(int i=0;i<in.size();i++){
