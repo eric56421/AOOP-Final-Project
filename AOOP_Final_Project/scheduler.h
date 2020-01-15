@@ -5,6 +5,9 @@
 #include <QtDebug>
 #include <fstream>
 #include <iomanip>
+#include <queue>
+#include <stack>
+#include <utility>
 
 #include "people.h"
 #include "runinformation.h"

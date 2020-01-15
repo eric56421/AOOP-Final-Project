@@ -18,10 +18,11 @@ void Scheduler::reset()
 void Scheduler::solve(vector<People> in)
 {
     // Update whenever changing floor
-    int lowest = 27, highest = 1, nowFloor = 1, nowDir = 1;  // 1->toUp, 0->toDown
+    int lowest = 27, highest = 1, nowFloor = 1, nowDir = 0;  // 1->toUp, 0->toDown
     // Update whenever entering or leaving floor
     int nowNum = 0;
     vector<floorInfo> floor(28);
+    queue<pair<int, int>> upNext, downNext;
     
     RunInformation tmp;
     
@@ -51,6 +52,59 @@ void Scheduler::solve(vector<People> in)
     out.close();
     qDebug()<<"output to tmp";
 
+
+    // downNext.push(make_pair(lowest, 0));
+    
+    while (downNext.size() || upNext.size()) {
+        if (nowDir == 0) {
+            nowFloor = downNext.front().first;
+            tmp.floor = nowFloor;
+            tmp.num = downNext.front().second;
+            tmp.inorout = 'O';
+            runschedular.push_back(tmp);
+
+            nowNum -= tmp.num;
+            floor.at(nowFloor).fromUp -= tmp.num;
+            downNext.pop();
+        }
+        else {
+            nowFloor = upNext.front().first;
+            tmp.floor = nowFloor;
+            tmp.num = upNext.front().second;
+            tmp.inorout = 'O';
+            runschedular.push_back(tmp);
+
+            nowNum -= tmp.num;
+            floor.at(nowFloor).fromDown -= tmp.num;
+            upNext.pop();
+        }
+
+        if (nowDir == 0 && downNext.size() == 0) {
+            nowDir = 1;
+            
+        }
+        if (nowDir == 1 && nowFloor >= highest) {
+            nowDir = 0;
+            for (int i=27; i>nowFloor; i--)
+                if (floor.at(i).toDown) {
+                    nowDir = 1;
+                    break;
+                }
+        }
+        else if (nowDir == 0 && nowFloor <= lowest){
+            nowDir = 1;
+            for (int i=1; i<nowFloor; i++)
+                if (floor.at(i).toUp) {
+                    nowDir = 0;
+                    break;
+                }
+        }
+
+        
+
+    }
+    
+
     while (lowest <= highest) {
         tmp.floor = nowFloor;
 
@@ -63,7 +117,8 @@ void Scheduler::solve(vector<People> in)
                     qDebug()<<"error1";
                 // check;
                 if (nowNum) {
-                    tmp.num = min(nowNum, floor.at(nowFloor).fromDown);
+                    tmp.num = upNext.front().first;
+                    // tmp.num = min(nowNum, floor.at(nowFloor).fromDown);
                     runschedular.push_back(tmp);
 
                     nowNum -= tmp.num;
@@ -155,10 +210,8 @@ void Scheduler::solve(vector<People> in)
         while (floor.at(highest).fromDown == 0)
             highest--;
         
-        if (nowDir == 1)
-            nowFloor++;
-        else
-            nowFloor--;
+        
+
     }
 
 
