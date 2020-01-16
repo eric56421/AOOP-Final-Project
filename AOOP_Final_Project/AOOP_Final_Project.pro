@@ -29,7 +29,6 @@ SOURCES += \
     getsignature.cpp \
     getsolution.cpp \
     judge.cpp \
-    judgewindow.cpp \
     largefactorial.cpp \
     largesroot.cpp \
     longestandshortestdistance.cpp \
@@ -75,7 +74,6 @@ HEADERS += \
     getsignature.h \
     getsolution.h \
     judge.h \
-    judgewindow.h \
     largefactorial.h \
     largesroot.h \
     longestandshortestdistance.h \
@@ -107,7 +105,6 @@ HEADERS += \
     themedian.h
 
 FORMS += \
-    judgewindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

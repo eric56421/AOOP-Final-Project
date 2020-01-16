@@ -15,7 +15,7 @@ void MyDatabase::connectMySQL()
     database.setUserName("root");
 
     //database.setPassword("nctuece");
-    database.setPassword("123456");
+    database.setPassword("nctuece");
 
     bool ok = database.open();
     if (ok) {
